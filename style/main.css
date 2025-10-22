@@ -1,31 +1,3 @@
-#cart-icon {
-  position: relative;
-  font-size: 1.8rem;
-  color: #f6eacc;
-  cursor: pointer;
-}
-
-#cart-icon[data-quantity="0"]::after {
-  content: "";
-}
-
-#cart-icon[data-quantity="0"]::after {
-  content: attr(data-quantity);
-  position: absolute;
-  top: -3px;
-  right: -5px;
-  width: 18px;
-  height: 18px;
-  background: #5e83ae;
-  color: #f6eacc;
-  font-size: 12px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-}
-
 .home {
   position: relative;
   min-height: 700px;
@@ -87,6 +59,7 @@
 .product-price {
   font-weight: 600;
   padding: 4px 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .product .add-to-cart {

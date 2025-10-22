@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart</title>
     <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="../style/cart.css" />
   </head>
   <body>
     <header>
@@ -16,10 +17,36 @@
           <a href="#" class="nav-link">Man</a>
           <a href="#" class="nav-link">Unisex</a>
         </div>
-        <a href="#">
-          <ion-icon name="bag" id="cart-icon" data-quantity="0"></ion-icon>
+        <a href="#" class="cart-link">
+          <ion-icon name="bag" id="cart-icon"></ion-icon>
+          <span id="cart-count">0</span>
         </a>
       </div>
     </header>
+    <section class="cart-container container">
+      <a href="main.html" class="back-homepage"
+        ><ion-icon name="chevron-back"></ion-icon> <span>Back To Home</span></a
+      >
+      <h2 class="cart-s-title">Shopping Cart</h2>
+      <div class="cart-box">
+        <div class="cart-data">
+          <div id="cartItems"></div>
+        </div>
+        <div class="cart-t">
+          <div id="cartTotal"></div>
+          <a href="#" class="checkout-btn">Checkout</a>
+        </div>
+      </div>
+    </section>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="../back/main.js"></script>
   </body>
 </html>

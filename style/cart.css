@@ -1,0 +1,134 @@
+.back-homepage {
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.back-homepage ion-icon {
+  font-size: 24px;
+  color: #5e83ae;
+}
+
+.back-homepage span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #5e83ae;
+}
+
+.cart-s-title {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  margin: 1rem 0;
+}
+
+.cart-box {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  gap: 1rem;
+}
+
+#cartItems {
+  display: grid;
+  row-gap: 1rem;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.5fr;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #2b4156;
+  padding-bottom: 10px;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cart-title-price {
+  display: grid;
+  gap: 8px;
+}
+
+.cart-item-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.cart-item-price {
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 1rem;
+}
+
+.quantity-controls button {
+  width: 32px;
+  height: 32px;
+  border: 1.6px solid #b6aa9a;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  color: #b6aa9a;
+}
+
+.quantity-controls button:hover {
+  background-color: #f6f1e4;
+  border-color: #fff;
+}
+
+.quantity-controls ion-icon {
+  color: #91877a;
+  font-size: 17px;
+}
+
+.quantity-controls input {
+  width: 40px;
+  text-align: center;
+  border: none;
+  font-weight: 500;
+  color: #2b4156;
+  background: transparent;
+  font-size: 0.95rem;
+}
+
+.remove-from-cart ion-icon {
+  color: #b6aa9a;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.cart-t {
+  display: flex;
+  flex-direction: column;
+}
+
+#cartTotal {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.checkout-btn {
+  margin-top: 2rem;
+  background: #5e83ae;
+  color: #f6eacc;
+  text-align: center;
+  padding: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  max-width: 150px;
+}

@@ -17,8 +17,9 @@
           <a href="#" class="nav-link">Man</a>
           <a href="#" class="nav-link">Unisex</a>
         </div>
-        <a href="cart.html">
-          <ion-icon name="bag" id="cart-icon" data-quantity="0"></ion-icon>
+        <a href="cart.html" class="cart-link">
+          <ion-icon name="bag" id="cart-icon"></ion-icon>
+          <span id="cart-count">0</span>
         </a>
       </div>
     </header>
@@ -42,7 +43,9 @@
             <h2 class="product-title">Blanche</h2>
             <p class="category">Woman</p>
             <p class="product-price">$189.2</p>
-            <a class="add-to-cart">Add to cart</a>
+            <a class="add-to-cart" onclick="addToCart(this.closest('.product'))"
+              >Add to cart</a
+            >
           </div>
         </div>
         <div class="product">
@@ -51,7 +54,9 @@
             <h2 class="product-title">Angels Share</h2>
             <p class="category">Unisex</p>
             <p class="product-price">$336.5</p>
-            <a class="add-to-cart">Add to cart</a>
+            <a class="add-to-cart" onclick="addToCart(this.closest('.product'))"
+              >Add to cart</a
+            >
           </div>
         </div>
         <div class="product">
@@ -60,7 +65,9 @@
             <h2 class="product-title">Stronger with You</h2>
             <p class="category">Man</p>
             <p class="product-price">$97.4</p>
-            <a class="add-to-cart">Add to cart</a>
+            <a class="add-to-cart" onclick="addToCart(this.closest('.product'))"
+              >Add to cart</a
+            >
           </div>
         </div>
         <div class="product">
@@ -69,12 +76,15 @@
             <h2 class="product-title">Cloud</h2>
             <p class="category">Woman</p>
             <p class="product-price">$63.1</p>
-            <a class="add-to-cart">Add to cart</a>
+            <a class="add-to-cart" onclick="addToCart(this.closest('.product'))"
+              >Add to cart</a
+            >
           </div>
         </div>
       </div>
     </section>
 
+    <script src="../back/main.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"

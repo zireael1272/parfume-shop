@@ -67,3 +67,31 @@ header {
   color: #f6eacc;
   font-weight: 700;
 }
+
+.cart-link {
+  position: relative;
+  display: inline-block;
+}
+
+#cart-icon {
+  font-size: 1.8rem;
+  color: #f6eacc;
+  cursor: pointer;
+}
+
+#cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  width: 18px;
+  height: 18px;
+  background: #5e83ae;
+  color: #f6eacc;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
