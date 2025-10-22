@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Parfume</title>
     <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="../style/main.css" />
   </head>
   <body>
     <header>
       <div class="nav container">
-        <ion-icon name="menu" id="menu-icon"></ion-icon>
-        <a href="main.html" class="logo"></a>
+        <a href="main.html" class="logo">Parfume</a>
         <div class="navbar">
           <a href="#" class="nav-link">Woman</a>
           <a href="#" class="nav-link">Man</a>
           <a href="#" class="nav-link">Unisex</a>
         </div>
-        <a href="#">
+        <a href="cart.html">
           <ion-icon name="bag" id="cart-icon" data-quantity="0"></ion-icon>
         </a>
       </div>
@@ -26,6 +26,52 @@
     <section class="home" id="home">
       <div class="home-img container">
         <img src="../resource/main.jpg" alt="" />
+      </div>
+    </section>
+
+    <section class="products container" id="products">
+      <h2 class="heading">Discover Product</h2>
+      <div class="product-container" id="productList">
+        <div class="product">
+          <img
+            src="../resource/blanche.png"
+            class="product-img"
+            alt="product"
+          />
+          <div class="product-info">
+            <h2 class="product-title">Blanche</h2>
+            <p class="category">Woman</p>
+            <p class="product-price">$189.2</p>
+            <a class="add-to-cart">Add to cart</a>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../resource/angel.png" class="product-img" alt="product" />
+          <div class="product-info">
+            <h2 class="product-title">Angels Share</h2>
+            <p class="category">Unisex</p>
+            <p class="product-price">$336.5</p>
+            <a class="add-to-cart">Add to cart</a>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../resource/you.png" class="product-img" alt="product" />
+          <div class="product-info">
+            <h2 class="product-title">Stronger with You</h2>
+            <p class="category">Man</p>
+            <p class="product-price">$97.4</p>
+            <a class="add-to-cart">Add to cart</a>
+          </div>
+        </div>
+        <div class="product">
+          <img src="../resource/cloud.png" class="product-img" alt="product" />
+          <div class="product-info">
+            <h2 class="product-title">Cloud</h2>
+            <p class="category">Woman</p>
+            <p class="product-price">$63.1</p>
+            <a class="add-to-cart">Add to cart</a>
+          </div>
+        </div>
       </div>
     </section>
 
