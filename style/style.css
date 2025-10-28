@@ -95,3 +95,57 @@ header {
   justify-content: center;
   text-decoration: none;
 }
+
+.footer {
+  background: #5e83ae;
+  padding: 40px 0;
+  height: 250px;
+}
+
+.footer-c {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 1rem;
+}
+
+.footer-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-box h2 {
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  color: #f6eacc;
+  margin-bottom: 2rem;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social ion-icon {
+  color: #f6eacc;
+  font-size: 28px;
+}
+
+.footer-box h3 {
+  font-size: 1.2rem;
+  color: #e6e6da;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.footer-box a {
+  color: #e6e6da;
+  font: 1rem;
+  margin-bottom: 10px;
+}
+
+.copyright {
+  color: #e6e6da;
+  text-transform: uppercase;
+  padding-top: 29px;
+}
