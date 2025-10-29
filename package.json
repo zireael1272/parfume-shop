@@ -2,9 +2,11 @@
   "name": "parfume-shop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js",
+    "dev": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/zireael1272/parfume-shop/issues"
   },
-  "homepage": "https://github.com/zireael1272/parfume-shop#readme"
+  "homepage": "https://github.com/zireael1272/parfume-shop#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "stripe": "^19.1.0"
+  }
 }

@@ -1,0 +1,172 @@
+* {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2em;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  background-color: #e6e6da;
+  color: #5e83ae;
+}
+
+img {
+  width: 100%;
+}
+
+section {
+  padding: 4rem 0 2rem;
+}
+
+.container {
+  max-width: 1070px;
+  margin: auto;
+  width: 100%;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  height: 12%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: #5e83ae;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 0;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: #f6eacc;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.navbar {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  column-gap: 1rem;
+}
+
+.nav-link {
+  font-size: 1.025rem;
+  color: #f6eacc;
+  font-weight: 700;
+}
+
+.cart-link {
+  position: relative;
+  display: inline-block;
+}
+
+#cart-icon {
+  font-size: 1.8rem;
+  color: #f6eacc;
+  cursor: pointer;
+}
+
+#cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  width: 18px;
+  height: 18px;
+  background: #5e83ae;
+  color: #f6eacc;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.sc-conteiner {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sc-conteiner h2 {
+  font-size: 3rem;
+}
+
+.sc-conteiner a {
+  padding: 10px;
+  font: 1.2rem;
+  background-color: #5e83ae;
+  color: #f6eacc;
+  margin-top: 1rem;
+}
+
+.footer {
+  background: #5e83ae;
+  padding: 40px 0;
+  height: 250px;
+}
+
+.footer-c {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 1rem;
+}
+
+.footer-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-box h2 {
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  color: #f6eacc;
+  margin-bottom: 2rem;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social ion-icon {
+  color: #f6eacc;
+  font-size: 28px;
+}
+
+.footer-box h3 {
+  font-size: 1.2rem;
+  color: #e6e6da;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.footer-box a {
+  color: #e6e6da;
+  font: 1rem;
+  margin-bottom: 10px;
+}
+
+.copyright {
+  color: #e6e6da;
+  text-transform: uppercase;
+  padding-top: 29px;
+}
