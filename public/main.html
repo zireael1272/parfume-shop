@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>Parfume</title>
     <link rel="stylesheet" href="style/style.css" />
     <link rel="stylesheet" href="style/main.css" />
@@ -13,7 +16,7 @@
       <div class="nav container">
         <a href="main.html" class="logo">Parfume</a>
         <div class="navbar">
-          <a href="#" class="nav-link">Woman</a>
+          <a href="woman.html" class="nav-link">Woman</a>
           <a href="#" class="nav-link">Man</a>
           <a href="#" class="nav-link">Unisex</a>
         </div>
@@ -21,87 +24,205 @@
           <ion-icon name="bag" id="cart-icon"></ion-icon>
           <span id="cart-count">0</span>
         </a>
+        <a href="#" class="account"
+          ><ion-icon name="person-circle-outline"></ion-icon
+        ></a>
       </div>
     </header>
 
-    <section class="home" id="home">
-      <div class="home-img container">
-        <img src="images/main.jpg" alt="" />
-      </div>
-    </section>
+    <main>
+      <section class="home" id="home">
+        <div class="home-img container">
+          <img src="images/main.jpg" alt="" />
+          <div class="overlay-text">Parfume</div>
+        </div>
+      </section>
 
-    <section class="products container" id="products">
-      <h2 class="heading">Discover Product</h2>
-      <div class="product-container" id="productList">
-        <div class="product">
-          <img src="images/blanche.png" class="product-img" alt="product" />
-          <div class="product-info">
-            <h2 class="product-title">Blanche</h2>
-            <p class="category">Woman</p>
-            <p class="product-price">$189.2</p>
-            <a class="add-to-cart" onclick="addToCart(this.closest('.product'))"
-              >Add to cart</a
-            >
+      <section class="products container" id="products">
+        <h2 class="heading">Discover Product</h2>
+        <div class="product-container" id="productList">
+          <div class="product">
+            <img
+              src="images/blanche.png"
+              class="product-img"
+              alt="product"
+            />
+            <div class="product-info">
+              <h2 class="product-title">Blanche</h2>
+              <p class="category">Woman</p>
+              <p class="product-price">$189.2</p>
+              <a
+                class="add-to-cart"
+                onclick="addToCart(this.closest('.product'))"
+                >Add to cart</a
+              >
+            </div>
+          </div>
+          <div class="product">
+            <img
+              src="images/angel.png"
+              class="product-img"
+              alt="product"
+            />
+            <div class="product-info">
+              <h2 class="product-title">Angels Share</h2>
+              <p class="category">Unisex</p>
+              <p class="product-price">$336.5</p>
+              <a
+                class="add-to-cart"
+                onclick="addToCart(this.closest('.product'))"
+                >Add to cart</a
+              >
+            </div>
+          </div>
+          <div class="product">
+            <img
+              src="images/you.png"
+              class="product-img"
+              alt="product"
+            />
+            <div class="product-info">
+              <h2 class="product-title">
+                Stronger with You
+              </h2>
+              <p class="category">Man</p>
+              <p class="product-price">$97.4</p>
+              <a
+                class="add-to-cart"
+                onclick="addToCart(this.closest('.product'))"
+                >Add to cart</a
+              >
+            </div>
+          </div>
+          <div class="product">
+            <img
+              src="images/cloud.png"
+              class="product-img"
+              alt="product"
+            />
+            <div class="product-info">
+              <h2 class="product-title">Cloud</h2>
+              <p class="category">Woman</p>
+              <p class="product-price">$63.1</p>
+              <a
+                class="add-to-cart"
+                onclick="addToCart(this.closest('.product'))"
+                >Add to cart</a
+              >
+            </div>
           </div>
         </div>
-        <div class="product">
-          <img src="images/angel.png" class="product-img" alt="product" />
-          <div class="product-info">
-            <h2 class="product-title">Angels Share</h2>
-            <p class="category">Unisex</p>
-            <p class="product-price">$336.5</p>
-            <a class="add-to-cart" onclick="addToCart(this.closest('.product'))"
-              >Add to cart</a
-            >
-          </div>
-        </div>
-        <div class="product">
-          <img src="images/you.png" class="product-img" alt="product" />
-          <div class="product-info">
-            <h2 class="product-title">Stronger with You</h2>
-            <p class="category">Man</p>
-            <p class="product-price">$97.4</p>
-            <a class="add-to-cart" onclick="addToCart(this.closest('.product'))"
-              >Add to cart</a
-            >
-          </div>
-        </div>
-        <div class="product">
-          <img src="images/cloud.png" class="product-img" alt="product" />
-          <div class="product-info">
-            <h2 class="product-title">Cloud</h2>
-            <p class="category">Woman</p>
-            <p class="product-price">$63.1</p>
-            <a class="add-to-cart" onclick="addToCart(this.closest('.product'))"
-              >Add to cart</a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <div class="footer" id="footer">
-      <div class="footer-c container">
-        <div class="footer-box">
-          <h2>Parfume</h2>
-          <div class="social">
-            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
-            <a href="#"><ion-icon name="mail"></ion-icon></a>
-          </div>
-          <p class="copyright container">&#169; Parfume</p>
+      <div class="wrapper" id="authModal">
+        <span class="close-btn" id="closeModal"
+          ><ion-icon name="close-outline"></ion-icon
+        ></span>
+
+        <div class="form-box login active">
+          <h2>Login</h2>
+          <form id="loginForm">
+            <div class="input-box">
+              <span class="icon"
+                ><ion-icon name="mail"></ion-icon
+              ></span>
+              <input type="email" required />
+              <label>Email</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"
+                ><ion-icon name="lock-closed"></ion-icon
+              ></span>
+              <input type="password" required />
+              <label>Password</label>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="login-register">
+              <p>
+                Don't have an account yet?
+                <a href="#" class="register-link"
+                  >Registration</a
+                >
+              </p>
+            </div>
+          </form>
         </div>
-        <div class="footer-box">
-          <h3>Help</h3>
-          <a href="#">Contact Us</a>
-          <a href="#">Payment</a>
-          <a href="#">Shipment</a>
-          <a href="#">Track your order</a>
-          <a href="#">Return your order</a>
+
+        <div class="form-box register">
+          <h2>Registration</h2>
+          <form id="registerForm">
+            <div class="input-box">
+              <span class="icon"
+                ><ion-icon name="mail"></ion-icon
+              ></span>
+              <input type="email" required />
+              <label>Email</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"
+                ><ion-icon name="lock-closed"></ion-icon
+              ></span>
+              <input
+                type="password"
+                class="password"
+                required
+              />
+              <label>Password</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"
+                ><ion-icon name="lock-closed"></ion-icon
+              ></span>
+              <input
+                type="password"
+                class="password-again"
+                required
+              />
+              <label>Repeat password</label>
+            </div>
+            <button type="submit" class="btn">
+              Register
+            </button>
+            <div class="login-register">
+              <p>
+                Already have an account?
+                <a href="#" class="login-link">Login</a>
+              </p>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
+
+      <div class="footer" id="footer">
+        <div class="footer-c container">
+          <div class="footer-box">
+            <h2>Parfume</h2>
+            <div class="social">
+              <a href="#"
+                ><ion-icon name="logo-instagram"></ion-icon
+              ></a>
+              <a href="#"
+                ><ion-icon name="mail"></ion-icon
+              ></a>
+            </div>
+            <p class="copyright container">
+              &#169; Parfume
+            </p>
+          </div>
+          <div class="footer-box">
+            <h3>Help</h3>
+            <a href="#">Contact Us</a>
+            <a href="#">Payment</a>
+            <a href="#">Shipment</a>
+            <a href="#">Track your order</a>
+            <a href="#">Return your order</a>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <script src="back/main.js"></script>
+    <script src="back/auth.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
