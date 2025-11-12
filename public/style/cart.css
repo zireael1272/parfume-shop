@@ -6,19 +6,18 @@
 
 .back-homepage ion-icon {
   font-size: 24px;
-  color: #5e83ae;
+  color: var(--main-accent-back);
 }
 
 .back-homepage span {
   font-size: 1rem;
   font-weight: 600;
-  color: #5e83ae;
+  color: var(--main-accent-back);
 }
 
 .cart-s-title {
-  font-size: 3.5rem;
-  text-transform: uppercase;
-  margin: 1rem 0;
+  font-size: 2.6rem;
+  margin: 2rem 0;
 }
 
 .cart-box {
@@ -37,7 +36,7 @@
   grid-template-columns: 1fr 1fr 1fr 0.5fr;
   align-items: center;
   gap: 15px;
-  border-bottom: 1px solid #2b4156;
+  border-bottom: 1px solid var(--dark-blue);
   padding-bottom: 10px;
 }
 
@@ -74,7 +73,7 @@
 .quantity-controls button {
   width: 32px;
   height: 32px;
-  border: 1.6px solid #b6aa9a;
+  border: 1.6px solid var(--main-accent-back);
   background: transparent;
   display: flex;
   align-items: center;
@@ -82,16 +81,16 @@
   cursor: pointer;
   transition: all 0.2s ease;
   font-weight: 500;
-  color: #b6aa9a;
+  color: var(--light-blue);
 }
 
 .quantity-controls button:hover {
-  background-color: #f6f1e4;
-  border-color: #fff;
+  background-color: var(--light-blue);
+  border-color: var(--blue-hover);
 }
 
 .quantity-controls ion-icon {
-  color: #91877a;
+  color: var(--dark-blue);
   font-size: 17px;
 }
 
@@ -100,15 +99,19 @@
   text-align: center;
   border: none;
   font-weight: 500;
-  color: #2b4156;
+  color: var(--dark-blue);
   background: transparent;
   font-size: 0.95rem;
 }
 
 .remove-from-cart ion-icon {
-  color: #b6aa9a;
+  color: var(--main-accent-back);
   font-size: 24px;
   cursor: pointer;
+}
+
+.remove-from-cart ion-icon:hover {
+  color: var(--blue-hover);
 }
 
 .cart-t {
@@ -117,18 +120,22 @@
 }
 
 #cartTotal {
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 600;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .checkout-btn {
   margin-top: 2rem;
-  background: #5e83ae;
-  color: #f6eacc;
+  background: var(--main-accent-back);
+  color: var(--main-text);
   text-align: center;
   padding: 10px;
   font-weight: 600;
   letter-spacing: 1px;
   max-width: 150px;
+}
+
+.checkout-btn:hover {
+  background: var(--blue-hover);
 }

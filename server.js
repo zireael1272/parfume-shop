@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import Router from "./routes.js";
 
 dotenv.config();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 const Mongo = process.env.MONGO_URL;
 
 const app = express();

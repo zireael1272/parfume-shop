@@ -13,11 +13,13 @@ router.post("/register", async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
     const newUser = new User({ email, password: hashedPassword, role });
     await newUser.save();
+
+    res.status(201).json({ message: "Registration successful" });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error(err);
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 });
 

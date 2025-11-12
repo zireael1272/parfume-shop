@@ -1,0 +1,186 @@
+.back-cart {
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+  margin: 0 60px;
+  font-size: 1.3rem;
+}
+
+.back-cart ion-icon {
+  color: var(--main-accent-back);
+}
+
+.back-cart span {
+  font-weight: 600;
+  color: var(--main-accent-back);
+}
+
+.checkout-container {
+  display: grid;
+  grid-template-columns: 1.6fr 1.1fr;
+  gap: 20px;
+  padding: 20px 60px;
+}
+
+.checkout-left {
+  background-color: #e6e6e6;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-right {
+  padding: 30px;
+  height: fit-content;
+}
+
+h2 {
+  font-size: 2.6rem;
+  margin-bottom: 25px;
+}
+
+.title-order {
+  font-size: 2rem;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.left-column .form-group {
+  max-width: 80%;
+}
+
+.form-group {
+  max-width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+#house,
+#apartment {
+  max-width: 4rem;
+}
+
+#house {
+  margin-bottom: 0.6rem;
+}
+
+label {
+  font-size: 1.1rem;
+  margin-top: 0.6rem;
+  color: var(--main-accent-back);
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  border: none;
+  border-bottom: 2px solid var(--main-accent-back);
+  color: var(--main-accent-back);
+  padding: 8px 5px;
+  font-size: 1rem;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--blue-hover);
+}
+
+#phone {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.checkout-btn,
+.payment-btn {
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--main-text);
+  background: var(--main-accent-back);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.checkout-btn:hover,
+.payment-btn:hover {
+  background-color: var(--blue-hover);
+}
+
+.hidden {
+  display: none;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+#cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid var(--dark-blue);
+  padding-bottom: 10px;
+}
+
+.cart-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-title-price {
+  display: grid;
+}
+
+.cart-item-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.quantity-display {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 2rem;
+}
+
+.totalPrice {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.return {
+  text-align: right;
+  margin-top: 1.2rem;
+}

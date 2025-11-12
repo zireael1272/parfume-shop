@@ -1,0 +1,78 @@
+.page-layout {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 70px);
+  font-size: 18px;
+}
+
+.vertical-nav {
+  position: fixed;
+  top: 70px;
+  left: 140px;
+  width: 220px;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.vertical-nav a {
+  color: var(--main-accent-back);
+  text-decoration: none;
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.vertical-nav a.active {
+  background-color: var(--main-accent-back);
+  color: var(--main-text);
+}
+
+.main-content {
+  margin: 160px 120px 0 400px;
+  padding: 20px;
+  flex: 1;
+  background: var(--light-blue);
+  border-radius: 35px;
+}
+
+.content-section {
+  display: none;
+  color: var(--main-accent-back);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.contact-item {
+  padding: 10px 0;
+}
+
+#contact {
+  position: relative;
+}
+
+.change-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 18px;
+  background: var(--main-accent-back);
+  color: var(--main-text);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  display: none;
+  transition: background-color 0.3s;
+}
+
+.change-btn:hover {
+  background-color: var(--blue-hover);
+}
+
+#contact.active .change-btn {
+  display: block;
+}
