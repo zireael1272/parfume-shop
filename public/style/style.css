@@ -75,7 +75,7 @@ header {
 
 .product {
   position: relative;
-  background: var(--light);
+  background: var(--grey);
   color: var(--dark-blue);
   height: 400px;
 }
@@ -268,7 +268,7 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
-  background: rgb(240, 236, 227, 0.8);
+  background: rgba(240, 236, 227, 0.8);
   backdrop-filter: blur(4px);
   width: 380px;
   height: 400px;

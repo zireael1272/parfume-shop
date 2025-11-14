@@ -30,6 +30,7 @@
 }
 
 .checkout-right {
+  position: relative;
   padding: 30px;
   height: fit-content;
 }

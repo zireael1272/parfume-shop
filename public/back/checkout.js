@@ -31,10 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
   toPaymentBtn.addEventListener("click", () => {
     const name = document.getElementById("fullName").value.trim();
     const phone = document.getElementById("phone").value.trim();
-    const address = document.getElementById("address").value.trim();
     const city = document.getElementById("city").value.trim();
+    const street = document.getElementById("street").value.trim();
+    const house = document.getElementById("house").value.trim();
+    const apartment = document.getElementById("apartment").value.trim();
 
-    if (!name || !phone || !address || !city) {
+    if (!name || !phone || !street || !house || !city) {
       alert("Please fill in all fields.");
       return;
     }
@@ -78,9 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     event.target.value = value;
   }
 
-  formStep2.addEventListener("submit", (e) => {
-    e.preventDefault();
-
+  PaymentBtn.addEventListener("click", () => {
     const cardNumber = cardNumberInput.value.replace(/\s/g, "");
     const expiry = expiryDateInput.value.trim();
     const cvc = cvcInput.value.trim();
@@ -89,18 +89,15 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Please enter a valid 16-digit card number.");
       return;
     }
-
     if (!/^\d{2}\/\d{2}$/.test(expiry)) {
       alert("Please enter a valid expiry date (MM/YY).");
       return;
     }
-
     if (cvc.length !== 3) {
       alert("Please enter a valid 3-digit CVC.");
       return;
     }
 
-    alert("Payment completed successfully!");
     localStorage.removeItem("cartItems");
     window.location.href = "success.html";
   });
