@@ -13,34 +13,85 @@
       <div class="nav container">
         <a href="main.html" class="logo">Parfume</a>
         <div class="navbar">
-          <a href="#" class="nav-link">Woman</a>
-          <a href="#" class="nav-link">Man</a>
-          <a href="#" class="nav-link">Unisex</a>
+          <a href="woman.html" id="woman" class="nav-link">Woman</a>
+          <a href="man.html" id="man" class="nav-link">Man</a>
+          <a href="unisex.html" id="unisex" class="nav-link">Unisex</a>
         </div>
         <a href="cart.html" class="cart-link">
           <ion-icon name="bag" id="cart-icon"></ion-icon>
           <span id="cart-count">0</span>
         </a>
+        <a href="#" class="account"
+          ><ion-icon name="person-circle-outline"></ion-icon
+        ></a>
       </div>
     </header>
 
     <section class="products container" id="products">
-        <h2 class="heading">Woman</h2>
-        <div class="product-container" id="productList">
-            <div class="product">
-              <img src="images/blanche.png" class="product-img" alt="product" />
-              <div class="product-info">
-                <h2 class="product-title">Blanche</h2>
-                <p class="category">Woman</p>
-                <p class="product-price">$189.2</p>
-                <a class="add-to-cart" onclick="addToCart(this.closest('.product'))"
-                  >Add to cart</a
-                >
-              </div>
-            </div>
+      <h2 class="heading">Woman</h2>
+      <div class="product-container" id="productList"></div>
     </section>
 
+    <div class="wrapper" id="authModal">
+      <span class="close-btn" id="closeModal"
+        ><ion-icon name="close-outline"></ion-icon
+      ></span>
+
+      <div class="form-box login active">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <div class="input-box">
+            <span class="icon"><ion-icon name="mail"></ion-icon></span>
+            <input type="email" required />
+            <label>Email</label>
+          </div>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input type="password" required />
+            <label>Password</label>
+          </div>
+          <button type="submit" class="btn">Login</button>
+          <div class="login-register">
+            <p>
+              Don't have an account yet?
+              <a href="#" class="register-link">Registration</a>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-box register">
+        <h2>Registration</h2>
+        <form id="registerForm">
+          <div class="input-box">
+            <span class="icon"><ion-icon name="mail"></ion-icon></span>
+            <input type="email" required />
+            <label>Email</label>
+          </div>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input type="password" class="password" required />
+            <label>Password</label>
+          </div>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+            <input type="password" class="password-again" required />
+            <label>Repeat password</label>
+          </div>
+          <button type="submit" class="btn">Register</button>
+          <div class="login-register">
+            <p>
+              Already have an account?
+              <a href="#" class="login-link">Login</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script src="back/main.js"></script>
+    <script src="back/auth.js"></script>
+    <script src="back/category.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
