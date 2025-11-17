@@ -78,7 +78,7 @@ header {
   position: relative;
   background: var(--grey);
   color: var(--dark-blue);
-  height: 400px;
+  min-height: 400px;
 }
 
 .product-img {
