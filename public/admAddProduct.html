@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/variables.css" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/adminPanel.css" />
+    <title>Admin Panel</title>
+  </head>
+  <body>
+    <header>
+      <div class="nav container">
+        <div class="navbar">
+          <a href="admPanel.html" class="nav-link">Dashboard</a>
+          <a href="#" class="nav-link">Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-dashboard container">
+      <h1 class="heading">Add New Product</h1>
+
+      <div class="product-container">
+        <form class="add-product">
+          <div class="form-group">
+            <label for="titleProduct">Title Product</label>
+            <input
+              type="text"
+              id="titleProduct"
+              placeholder="Enter title product"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" required>
+              <option value="">Choose</option>
+              <option value="Woman">Woman</option>
+              <option value="Man">Man</option>
+              <option value="Unisex">Unisex</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="priceProduct">Price</label>
+            <input
+              type="number"
+              id="priceProduct"
+              placeholder="Enter price"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="imageProduct">Image URL</label>
+            <input type="file" id="imageProduct" accept="image/*" required />
+          </div>
+          <div class="form-group">
+            <label for="stockProduct">Stock</label>
+            <input
+              type="number"
+              id="stockProduct"
+              placeholder="Enter stock"
+              required
+            />
+          </div>
+
+          <button type="submit" class="admin-btn">Add Product</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

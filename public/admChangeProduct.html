@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/variables.css" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/adminPanel.css" />
+    <title>Admin Panel</title>
+  </head>
+  <body>
+    <header>
+      <div class="nav container">
+        <div class="navbar">
+          <a href="admPanel.html" class="nav-link">Dashboard</a>
+          <a href="#" class="nav-link">Logout</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-dashboard container">
+      <h1 class="heading">Edit Product</h1>
+      <div class="product-container">
+        <form class="edit-product">
+          <div class="form-group">
+            <label>Title Product</label>
+            <input type="text" id="titleProduct" readonly />
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <input type="text" id="categoryProduct" readonly />
+          </div>
+          <div class="form-group">
+            <label>Price</label>
+            <input
+              type="number"
+              id="priceProduct"
+              placeholder="Enter price"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Stock</label>
+            <input
+              type="number"
+              id="stockProduct"
+              placeholder="Enter stock"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Image</label>
+            <input type="file" id="imageProduct" accept="image/*" />
+            <img
+              id="previewImage"
+              style="margin-top: 10px; max-width: 100%; display: none"
+            />
+          </div>
+          <button type="submit" class="admin-btn">Save Changes</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
