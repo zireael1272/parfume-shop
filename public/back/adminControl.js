@@ -1,32 +1,53 @@
-const orders = [
-  {
-    id: 1,
-    products: [
-      { name: "Blanche", quantity: 1, price: 189.2, image: "images/blanche.png" },
-    ],
-    total: 189.2,
-    status: "Pending",
-  },
-  {
-    id: 2,
-    products: [
-      { name: "Angels Share", quantity: 2, price: 336.5, image: "images/angel.png" },
-      { name: "Cloud", quantity: 1, price: 63.1, image: "images/cloud.png" },
-    ],
-    total: 736.1,
-    status: "Pending",
-  },
-];
+document.addEventListener("DOMContentLoaded", () => {
+  // Навигация logout
+  const navLinks = document.querySelectorAll(".navbar a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const text = link.textContent.trim().toLowerCase();
+      if (text === "logout") {
+        e.preventDefault();
+        localStorage.clear();
+        window.location.href = "main.html";
+      }
+    });
+  });
 
-const ordersContainer = document.getElementById("ordersContainer");
+  // Работа с заказами
+  const ordersContainer = document.getElementById("ordersContainer");
+  if (!ordersContainer) return; // если контейнера нет — дальше не выполняем код
 
-orders.forEach((order) => {
-  const orderCard = document.createElement("div");
-  orderCard.className = "order-card";
+  const orders = [
+    {
+      id: 1,
+      products: [
+        { name: "Blanche", quantity: 1, price: 189.2, image: "images/blanche.png" },
+      ],
+      total: 189.2,
+      status: "Pending",
+    },
+    {
+      id: 2,
+      products: [
+        {
+          name: "Angels Share",
+          quantity: 2,
+          price: 336.5,
+          image: "images/angel.png",
+        },
+        { name: "Cloud", quantity: 1, price: 63.1, image: "images/cloud.png" },
+      ],
+      total: 736.1,
+      status: "Pending",
+    },
+  ];
 
-  const firstProduct = order.products[0];
+  orders.forEach((order) => {
+    const orderCard = document.createElement("div");
+    orderCard.className = "order-card";
 
-  orderCard.innerHTML = `
+    const firstProduct = order.products[0];
+
+    orderCard.innerHTML = `
       <div class="order-info">
         <img src="${firstProduct.image}" alt="${firstProduct.name}" />
         <div class="order-details">
@@ -55,12 +76,12 @@ orders.forEach((order) => {
       </select>
     `;
 
-  const select = orderCard.querySelector(".status-select");
-  select.addEventListener("change", (e) => {
-    order.status = e.target.value;
-    alert(`Order ${order.id} status changed to ${order.status}`);
-    // Здесь позже можно добавить fetch-запрос на сервер для сохранения изменения в MongoDB
-  });
+    const select = orderCard.querySelector(".status-select");
+    select.addEventListener("change", (e) => {
+      order.status = e.target.value;
+      alert(`Order ${order.id} status changed to ${order.status}`);
+    });
 
-  ordersContainer.appendChild(orderCard);
+    ordersContainer.appendChild(orderCard);
+  });
 });

@@ -114,7 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (response.ok) {
           localStorage.setItem("isLoggedIn", "true");
           localStorage.setItem("userEmail", email);
-          window.location.href = "account.html";
+          localStorage.setItem("userRole", data.user.role);
+          if (data.user.role === "admin") {
+            window.location.href = "admPanel.html";
+          } else {
+            window.location.href = "account.html";
+          }
         } else {
           alert(data.message || "Login failed.");
         }
