@@ -23,7 +23,7 @@
 }
 
 .checkout-left {
-  background-color: #e6e6e6;
+  background-color: var(--light-blue);
   border-radius: 20px;
   padding: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

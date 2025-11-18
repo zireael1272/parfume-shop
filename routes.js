@@ -1,5 +1,4 @@
 import express from "express";
-import mongoose from "mongoose";
 const router = express.Router();
 import User from "./models/users.js";
 import Address from "./models/address.js";
@@ -53,6 +52,15 @@ router.post("/login", async (req, res) => {
 router.get("/users", async (req, res) => {
   const users = await User.find();
   res.json(users);
+});
+
+router.get("/products", async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.json(products);
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
 });
 
 export default router;
