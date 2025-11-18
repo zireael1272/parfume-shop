@@ -1,6 +1,11 @@
 import express from "express";
+import mongoose from "mongoose";
 const router = express.Router();
 import User from "./models/users.js";
+import Address from "./models/address.js";
+import Product from "./models/product.js";
+import DeliveryMethod from "./models/deliveryMethod.js";
+import Order from "./models/order.js";
 import bcrypt from "bcrypt";
 
 router.post("/register", async (req, res) => {
