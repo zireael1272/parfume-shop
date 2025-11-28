@@ -1,0 +1,28 @@
+.form-product-container {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  margin: 0 auto;
+  gap: 52px;
+}
+
+.groups {
+  display: flex;
+  justify-content: space-between;
+  gap: 64px;
+}
+
+.form-group {
+  flex-grow: 1;
+  gap: 28px;
+}
+
+.field-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-control::placeholder {
+  color: var(--dark-blue);
+}

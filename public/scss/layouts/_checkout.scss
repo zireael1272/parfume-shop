@@ -141,20 +141,6 @@ label {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-#cartItems {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.cart-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  border-bottom: 1px solid var(--dark-blue);
-  padding-bottom: 10px;
-}
-
 .cart-item img {
   width: 70px;
   height: 70px;

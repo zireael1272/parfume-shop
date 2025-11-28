@@ -1,0 +1,43 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-grow: 1;
+}
+
+.header-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-grow: 1;
+}
+
+.logo {
+  font-size: 28px;
+  color: var(--main-text);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.header-control-icon {
+  fill: var(--main-text);
+}
+
+.link-icons {
+  display: flex;
+}
+
+.account-btn {
+  background-color: transparent;
+  border: 0;
+  width: 32px;
+  height: 32px;
+}

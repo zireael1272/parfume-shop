@@ -1,20 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Навигация logout
-  const navLinks = document.querySelectorAll(".navbar a");
-  navLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const text = link.textContent.trim().toLowerCase();
-      if (text === "logout") {
-        e.preventDefault();
-        localStorage.clear();
-        window.location.href = "main.html";
-      }
-    });
+  document.body.addEventListener("click", (e) => {
+    if (e.target.closest("#adm-logout")) {
+      e.preventDefault();
+      localStorage.clear();
+      window.location.href = "index.html";
+    }
   });
 
-  // Работа с заказами
   const ordersContainer = document.getElementById("ordersContainer");
-  if (!ordersContainer) return; // если контейнера нет — дальше не выполняем код
+  if (!ordersContainer) return;
 
   const orders = [
     {
@@ -49,18 +43,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     orderCard.innerHTML = `
       <div class="order-info">
-        <img src="${firstProduct.image}" alt="${firstProduct.name}" />
-        <div class="order-details">
-          <p>Order ID: ${order.id}</p>
-          <p>Total: $${order.total.toFixed(2)}</p>
-          <p>Products: ${
-            order.products.length > 1
-              ? firstProduct.name + " + " + (order.products.length - 1) + " more"
-              : firstProduct.name
-          }</p>
+        <div class="order-block">
+          <img src="${firstProduct.image}" alt="${firstProduct.name}" />
+          <div class="order-details">
+            <p>Order Number: ${order.id}</p>
+            <p>Total: $${order.total.toFixed(2)}</p>
+            <p>Products: ${
+              order.products.length > 1
+                ? firstProduct.name + " + " + (order.products.length - 1) + " more"
+                : firstProduct.name
+            }</p>
+          </div>
         </div>
-      </div>
-      <select class="status-select">
+        <select class="status-select">
         <option value="Pending" ${
           order.status === "Pending" ? "selected" : ""
         }>Pending</option>
@@ -74,6 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
           order.status === "Canceled" ? "selected" : ""
         }>Canceled</option>
       </select>
+      </div>
+      
     `;
 
     const select = orderCard.querySelector(".status-select");

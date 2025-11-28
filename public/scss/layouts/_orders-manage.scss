@@ -1,0 +1,52 @@
+.orders-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card {
+  display: flex;
+  width: 70%;
+  background: var(--light-blue);
+  padding: 32px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-info {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.order-info img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.order-block {
+  display: flex;
+  gap: 24px;
+  flex-basis: 70%;
+}
+
+.order-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-details p {
+  margin: 0;
+}
+
+.status-select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-weight: 600;
+  cursor: pointer;
+}

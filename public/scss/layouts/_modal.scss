@@ -1,0 +1,83 @@
+.wrapper {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  width: 380px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  background: rgba(240, 236, 227, 0.8);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+  transform: translate(-50%, -50%) scale(0);
+  transition:
+    transform 0.3s ease,
+    height 0.2s ease;
+  z-index: 200;
+  position: fixed;
+  color: var(--main-accent-back);
+  height: 400px;
+}
+
+.wrapper.active-popup {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.wrapper.active {
+  height: 470px;
+}
+
+.wrapper .form-box {
+  width: 100%;
+  padding: 0 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.wrapper .form-box.login {
+  transform: translateX(0);
+  transition: transform 0.25s ease;
+}
+
+.wrapper.active .form-box.login {
+  transform: translateX(-400px);
+}
+
+.wrapper .form-box.register {
+  transform: translateX(400px);
+  transition: transform 0.25s ease;
+}
+
+.wrapper.active .form-box.register {
+  transform: translateX(0);
+}
+
+.login-register {
+  font-size: 0.9em;
+  text-align: center;
+  margin: 25px 0 10px;
+}
+
+.login-register a {
+  color: var(--main-accent-back);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-register a:hover {
+  text-decoration: underline;
+}
+
+.close-btn {
+  position: absolute;
+  background-color: transparent;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
+  fill: var(--main-accent-back);
+  border: 0;
+  width: 32px;
+  height: 32px;
+  z-index: 1000;
+  pointer-events: auto;
+}

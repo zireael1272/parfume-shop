@@ -1,27 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style/variables.css" />
-    <link rel="stylesheet" href="style/style.css" />
-    <link rel="stylesheet" href="style/adminPanel.css" />
+    <link rel="stylesheet" href="./scss/main.min.css" />
     <title>Admin Panel</title>
   </head>
   <body>
     <header>
-      <div class="nav container">
-        <div class="navbar">
-          <a href="admPanel.html" class="nav-link">Dashboard</a>
-          <a href="#" class="nav-link">Logout</a>
+      <div class="header-container">
+        <div class="header-menu">
+          <a href="admPanel.html" class="header-link">Dashboard</a>
+          <a href="#" class="header-link" id="adm-logout">Logout</a>
         </div>
       </div>
     </header>
 
-    <main class="admin-dashboard container">
+    <main class="admin-dashboard-section">
       <h1 class="heading">Processing Orders</h1>
-      <div class="orders-container" id="ordersContainer"></div>
+      <div class="orders-container container" id="ordersContainer"></div>
     </main>
 
     <script src="js/adminControl.js"></script>

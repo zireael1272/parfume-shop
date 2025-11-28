@@ -1,42 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart</title>
-    <link rel="stylesheet" href="style/variables.css" />
-    <link rel="stylesheet" href="style/style.css" />
-    <link rel="stylesheet" href="style/cart.css" />
+    <link rel="stylesheet" href="./scss/main.min.css" />
   </head>
   <body>
     <header>
-      <div class="nav container">
-        <a href="main.html" class="logo">Parfume</a>
-        <div class="navbar">
-          <a href="woman.html" id="woman" class="nav-link">Woman</a>
-          <a href="man.html" id="man" class="nav-link">Man</a>
-          <a href="unisex.html" id="unisex" class="nav-link">Unisex</a>
+      <div class="container">
+        <div class="header-container">
+          <div class="header-nav">
+            <a href="index.html" class="logo">Parfume</a>
+            <div class="header-menu">
+              <a href="woman.html" class="header-link">Woman</a>
+              <a href="man.html" class="header-link">Man</a>
+              <a href="unisex.html" class="header-link">Unisex</a>
+            </div>
+          </div>
+          <div class="link-icons">
+            <a href="cart.html" class="cart-link">
+              <svg class="header-control-icon" width="32" height="32">
+                <use href="./images/icons.svg#icon-bag"></use>
+              </svg>
+              <span id="cart-count">0</span>
+            </a>
+            <a href="#" class="account">
+              <svg class="header-control-icon" width="32" height="32">
+                <use href="./images/icons.svg#icon-person-circle"></use>
+              </svg>
+            </a>
+          </div>
         </div>
-        <a href="#" class="cart-link">
-          <ion-icon name="bag" id="cart-icon"></ion-icon>
-          <span id="cart-count">0</span>
-        </a>
-        <a href="account.html" class="account"
-          ><ion-icon name="person-circle-outline"></ion-icon
-        ></a>
       </div>
     </header>
 
-    <section class="cart-container container">
-      <h2 class="cart-s-title">Shopping Cart</h2>
-      <div class="cart-box">
-        <div class="cart-data">
-          <div id="cartItems"></div>
-        </div>
-        <div class="cart-t">
-          <div id="cartTotal"></div>
-          <a href="checkout.html" class="checkout-btn">Checkout</a>
+    <section class="cart-section section">
+      <div class="container">
+        <div class="cart-container">
+          <h2 class="cart-title">Shopping Cart</h2>
+          <div class="cart-box">
+            <div class="cart-data">
+              <div class="cart-items" id="cartItems"></div>
+            </div>
+            <div class="cart-total">
+              <div id="cartTotal"></div>
+              <a href="checkout.html" class="checkout-btn">Checkout</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

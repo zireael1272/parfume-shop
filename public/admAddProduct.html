@@ -1,73 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style/variables.css" />
-    <link rel="stylesheet" href="style/style.css" />
-    <link rel="stylesheet" href="style/adminPanel.css" />
+    <link rel="stylesheet" href="./scss/main.min.css" />
     <title>Admin Panel</title>
   </head>
   <body>
     <header>
-      <div class="nav container">
-        <div class="navbar">
-          <a href="admPanel.html" class="nav-link">Dashboard</a>
-          <a href="#" class="nav-link">Logout</a>
+      <div class="header-container">
+        <div class="header-menu">
+          <a href="admPanel.html" class="header-link">Dashboard</a>
+          <a href="#" class="header-link">Logout</a>
         </div>
       </div>
     </header>
 
-    <main class="admin-dashboard container">
+    <main class="admin-dashboard-section">
       <h1 class="heading">Add New Product</h1>
 
-      <div class="product-container">
-        <form class="add-product">
-          <div class="form-group">
-            <label for="titleProduct">Title Product</label>
-            <input
-              type="text"
-              id="titleProduct"
-              placeholder="Enter title product"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="category">Category</label>
-            <select id="category" required>
-              <option value="">Choose</option>
-              <option value="Woman">Woman</option>
-              <option value="Man">Man</option>
-              <option value="Unisex">Unisex</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="priceProduct">Price</label>
-            <input
-              type="number"
-              id="priceProduct"
-              placeholder="Enter price"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="imageProduct">Image URL</label>
-            <input type="file" id="imageProduct" accept="image/*" required />
-          </div>
-          <div class="form-group">
-            <label for="stockProduct">Stock</label>
-            <input
-              type="number"
-              id="stockProduct"
-              placeholder="Enter stock"
-              required
-            />
-          </div>
+      <form class="form-product">
+        <div class="form-product-container">
+          <div class="groups">
+            <ul class="form-group">
+              <li class="field-block">
+                <label for="titleProduct" class="input-label">Title Product</label>
+                <input
+                  type="text"
+                  class="input-control"
+                  id="titleProduct"
+                  placeholder="Enter title product"
+                  required
+                />
+              </li>
+              <li class="field-block">
+                <label for="category" class="input-label">Category</label>
+                <select id="category" required>
+                  <option value="">Choose</option>
+                  <option value="Woman">Woman</option>
+                  <option value="Man">Man</option>
+                  <option value="Unisex">Unisex</option>
+                </select>
+              </li>
+              <li class="field-block">
+                <label for="priceProduct" class="input-label">Price</label>
+                <input
+                  type="number"
+                  class="input-control"
+                  id="priceProduct"
+                  placeholder="Enter price"
+                  required
+                />
+              </li>
+            </ul>
 
-          <button type="submit" class="admin-btn">Add Product</button>
-        </form>
-      </div>
+            <ul class="form-group">
+              <li class="field-block">
+                <label for="imageProduct" class="input-label">Image URL</label>
+                <input
+                  type="file"
+                  class="input-control"
+                  id="imageProduct"
+                  accept="image/*"
+                  required
+                />
+              </li>
+              <li class="field-block">
+                <label for="stockProduct" class="input-label">Stock</label>
+                <input
+                  type="number"
+                  class="input-control"
+                  id="stockProduct"
+                  placeholder="Enter stock"
+                  required
+                />
+              </li>
+            </ul>
+          </div>
+          <button type="submit" class="manage-product-btn btn">Add Product</button>
+        </div>
+      </form>
     </main>
   </body>
 </html>

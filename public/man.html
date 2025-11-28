@@ -1,35 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style/variables.css" />
-    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="./scss/main.min.css" />
     <title>Man</title>
   </head>
   <body>
     <header>
-      <div class="nav container">
-        <a href="main.html" class="logo">Parfume</a>
-        <div class="navbar">
-          <a href="woman.html" id="woman" class="nav-link">Woman</a>
-          <a href="man.html" id="man" class="nav-link">Man</a>
-          <a href="unisex.html" id="unisex" class="nav-link">Unisex</a>
+      <div class="container">
+        <div class="header-container">
+          <div class="header-nav">
+            <a href="index.html" class="logo">Parfume</a>
+            <div class="header-menu">
+              <a href="woman.html" class="header-link">Woman</a>
+              <a href="man.html" class="header-link">Man</a>
+              <a href="unisex.html" class="header-link">Unisex</a>
+            </div>
+          </div>
+          <div class="link-icons">
+            <a href="cart.html" class="cart-link">
+              <svg class="header-control-icon" width="32" height="32">
+                <use href="./images/icons.svg#icon-bag"></use>
+              </svg>
+              <span class="cart-count" id="cart-count">0</span>
+            </a>
+            <button type="button" class="account-btn" id="account-btn">
+              <svg class="header-control-icon" width="32" height="32">
+                <use href="./images/icons.svg#icon-person-circle"></use>
+              </svg>
+            </button>
+          </div>
         </div>
-        <a href="cart.html" class="cart-link">
-          <ion-icon name="bag" id="cart-icon"></ion-icon>
-          <span id="cart-count">0</span>
-        </a>
-        <a href="#" class="account"
-          ><ion-icon name="person-circle-outline"></ion-icon
-        ></a>
       </div>
     </header>
 
-    <section class="products container" id="products">
-      <h2 class="heading">Man</h2>
-      <div class="product-container" id="productList"></div>
+    <section class="products-section" id="products">
+      <div class="container">
+        <div class="products-container">
+          <h2 class="heading">Man</h2>
+          <div class="product-card-container" id="productList"></div>
+        </div>
+      </div>
     </section>
 
     <div class="wrapper" id="authModal">
@@ -89,26 +102,40 @@
       </div>
     </div>
 
-    <div class="footer" id="footer">
-      <div class="footer-c container">
-        <div class="footer-box">
-          <h2>Parfume</h2>
-          <div class="social">
-            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
-            <a href="#"><ion-icon name="mail"></ion-icon></a>
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-content">
+            <h2 class="logo">Parfume</h2>
           </div>
-          <p class="copyright container">&#169; Parfume</p>
-        </div>
-        <div class="footer-box">
-          <h3>Help</h3>
-          <a href="#">Contact Us</a>
-          <a href="#">Payment</a>
-          <a href="#">Shipment</a>
-          <a href="#">Track your order</a>
-          <a href="#">Return your order</a>
+          <div class="footer-nav">
+            <h3 class="footer-nav-title">Help</h3>
+            <div class="footer-links">
+              <a href="#" class="footer-link">Contact Us</a>
+              <a href="#" class="footer-link">Payment</a>
+              <a href="#" class="footer-link">Shipment</a>
+              <a href="#" class="footer-link">Track your order</a>
+              <a href="#" class="footer-link">Return your order</a>
+            </div>
+          </div>
+          <div class="footer-box">
+            <div class="footer-social">
+              <a href="#">
+                <svg class="footer-social-icon" width="32" height="32">
+                  <use href="./images/icons.svg#icon-logo-instagram"></use>
+                </svg>
+              </a>
+              <a href="#">
+                <svg class="footer-social-icon" width="32" height="32">
+                  <use href="./images/icons.svg#icon-logo-mail"></use>
+                </svg>
+              </a>
+            </div>
+            <p class="copyright">&#169; Parfume</p>
+          </div>
         </div>
       </div>
-    </div>
+    </footer>
 
     <script src="js/main.js"></script>
     <script src="js/auth.js"></script>

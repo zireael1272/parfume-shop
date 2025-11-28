@@ -1,0 +1,101 @@
+.section {
+  height: 740px;
+  padding: 100px 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.heading {
+  font-size: 72px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 48px;
+  line-height: 100%;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  width: 18px;
+  height: 18px;
+  background: var(--main-accent-back);
+  color: var(--main-text);
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.sc-conteiner {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sc-conteiner h2 {
+  font-size: 3rem;
+}
+
+.sc-conteiner a {
+  padding: 10px;
+  font: 1.2rem;
+  background-color: var(--main-accent-back);
+  color: var(--main-text);
+  margin-top: 1rem;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid var(--main-accent-back);
+  margin: 30px 0;
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: var(--main-accent-back);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: var(--main-accent-back);
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -5px;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 8px;
+  font-size: 1.2em;
+  line-height: 57px;
+}

@@ -1,0 +1,49 @@
+.admin-dashboard-section {
+  padding: 50px 0;
+}
+
+.admin-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.admin-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 340px;
+  height: 280px;
+  border-radius: 24px;
+  padding: 24px;
+  background-color: var(--grey);
+}
+
+.title-control {
+  margin: 0;
+}
+
+.admin-control {
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px;
+  width: 100%;
+  gap: 24px;
+}
+
+.admin-btn {
+  display: block;
+  width: 100%;
+  background: var(--main-accent-back);
+  color: var(--light-blue);
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.admin-btn:hover {
+  background: var(--blue-hover);
+  color: var(--main-text);
+}

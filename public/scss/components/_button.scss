@@ -1,0 +1,19 @@
+.btn {
+  width: 100%;
+  height: 45px;
+  display: inline-block;
+  background: var(--main-accent-back);
+  color: var(--main-text);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: background 0.3s;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.btn:hover {
+  background: var(--blue-hover);
+}

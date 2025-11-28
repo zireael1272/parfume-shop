@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Woman</title>
+    <title>Parfume</title>
     <link rel="stylesheet" href="./scss/main.min.css" />
   </head>
   <body>
@@ -36,71 +36,83 @@
       </div>
     </header>
 
-    <section class="products-section" id="products">
-      <div class="container">
-        <div class="products-container">
-          <h2 class="heading">Woman</h2>
-          <div class="product-card-container" id="productList"></div>
+    <main>
+      <section class="hero-section section">
+        <div class="container">
+          <div class="hero-container">
+            <h1 class="hero-section-text">Parfume</h1>
+          </div>
+        </div>
+      </section>
+
+      <section class="products-section" id="products">
+        <div class="container">
+          <div class="products-container">
+            <h2 class="heading">Discover Product</h2>
+            <div class="product-card-container" id="productList"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="wrapper" id="authModal">
+        <button type="button" class="close-btn" id="closeBtn">
+          <svg class="close-icon" width="28" height="28">
+            <use href="./images/icons.svg#icon-close"></use>
+          </svg>
+        </button>
+
+        <div class="form-box login active">
+          <h2>Login</h2>
+          <form id="loginForm">
+            <div class="input-box">
+              <span class="icon"><ion-icon name="mail"></ion-icon></span>
+              <input type="email" required />
+              <label>Email</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+              <input type="password" required />
+              <label>Password</label>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="login-register">
+              <p>
+                Don't have an account yet?
+                <a href="#" class="register-link">Registration</a>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <div class="form-box register">
+          <h2>Registration</h2>
+          <form id="registerForm">
+            <div class="input-box">
+              <span class="icon"><ion-icon name="mail"></ion-icon></span>
+              <input type="email" required />
+              <label>Email</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+              <input type="password" class="password" required />
+              <label>Password</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+              <input type="password" class="password-again" required />
+              <label>Repeat password</label>
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <div class="login-register">
+              <p>
+                Already have an account?
+                <a href="#" class="login-link">Login</a>
+              </p>
+            </div>
+          </form>
         </div>
       </div>
-    </section>
-
-    <div class="wrapper" id="authModal">
-      <span class="close-btn" id="closeModal"
-        ><ion-icon name="close-outline"></ion-icon
-      ></span>
-
-      <div class="form-box login active">
-        <h2>Login</h2>
-        <form id="loginForm">
-          <div class="input-box">
-            <span class="icon"><ion-icon name="mail"></ion-icon></span>
-            <input type="email" required />
-            <label>Email</label>
-          </div>
-          <div class="input-box">
-            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-            <input type="password" required />
-            <label>Password</label>
-          </div>
-          <button type="submit" class="btn">Login</button>
-          <div class="login-register">
-            <p>
-              Don't have an account yet?
-              <a href="#" class="register-link">Registration</a>
-            </p>
-          </div>
-        </form>
-      </div>
-
-      <div class="form-box register">
-        <h2>Registration</h2>
-        <form id="registerForm">
-          <div class="input-box">
-            <span class="icon"><ion-icon name="mail"></ion-icon></span>
-            <input type="email" required />
-            <label>Email</label>
-          </div>
-          <div class="input-box">
-            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-            <input type="password" class="password" required />
-            <label>Password</label>
-          </div>
-          <div class="input-box">
-            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-            <input type="password" class="password-again" required />
-            <label>Repeat password</label>
-          </div>
-          <button type="submit" class="btn">Register</button>
-          <div class="login-register">
-            <p>
-              Already have an account?
-              <a href="#" class="login-link">Login</a>
-            </p>
-          </div>
-        </form>
-      </div>
-    </div>
+    </main>
 
     <footer class="footer" id="footer">
       <div class="container">
@@ -137,9 +149,10 @@
       </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
     <script src="js/auth.js"></script>
-    <script src="js/category.js"></script>
+    <script src="js/main.js"></script>
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"

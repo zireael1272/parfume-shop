@@ -1,0 +1,49 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--main-accent-back);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2em;
+  list-style: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  display: block;
+}
+
+header {
+  position: absolute;
+  width: 100%;
+  padding: 32px 0;
+  top: 0;
+  left: 0;
+  background: var(--main-accent-back);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  bottom: 0;
+}

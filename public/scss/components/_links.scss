@@ -1,0 +1,21 @@
+.header-link {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--main-text);
+  transition: transform 0.2s;
+}
+
+.header-link:hover {
+  transform: scale(1.1);
+}
+
+.cart-link {
+  position: relative;
+  margin-right: 18px;
+
+  color: var(--main-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

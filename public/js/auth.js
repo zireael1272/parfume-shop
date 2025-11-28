@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const registerLink = document.querySelector(".register-link");
   const loginLink = document.querySelector(".login-link");
   const registerFormElement = document.getElementById("registerForm");
-  const closeModal = document.querySelector(".close-btn");
+  const closeBtn = document.getElementById("closeBtn");
 
   function isUserLoggedIn() {
     return localStorage.getItem("isLoggedIn") === "true";
   }
 
-  document.querySelector(".account").addEventListener("click", (e) => {
+  document.querySelector(".account-btn").addEventListener("click", (e) => {
     e.preventDefault();
 
     if (isUserLoggedIn()) {
@@ -33,11 +33,17 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.classList.remove("active");
   });
 
-  if (closeModal) {
-    closeModal.addEventListener("click", () => {
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
       wrapper.classList.remove("active-popup", "active");
     });
   }
+
+  window.addEventListener("click", (e) => {
+    if (e.target === wrapper) {
+      wrapper.classList.remove("active-popup", "active");
+    }
+  });
 
   window.addEventListener("click", (e) => {
     if (e.target === wrapper) {

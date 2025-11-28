@@ -21,7 +21,7 @@ mongoose
   .catch((error) => console.error("DB connection error:", error));
 
 app.get("/", (req, res) => {
-  res.sendFile("main.html", { root: "public" });
+  res.sendFile("index.html", { root: "public" });
 });
 
 app.listen(PORT, () => {
