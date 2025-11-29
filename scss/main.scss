@@ -2,12 +2,13 @@
 
 @import "./components/links";
 @import "./components/button";
+@import "./components/auth-modal";
 
 @import "./layouts/header";
 @import "./layouts/footer";
 @import "./layouts/account";
 @import "./layouts/admin-panel";
-@import "./layouts/product-manage";
+@import "./layouts/form";
 @import "./layouts/orders-manage";
 @import "./layouts/cart";
 @import "./layouts/checkout";

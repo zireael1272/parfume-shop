@@ -11,50 +11,18 @@
     <header>
       <div class="header-container">
         <div class="header-menu">
-          <a href="admPanel.html" class="header-link">Dashboard</a>
+          <a href="/admPanel" class="header-link">Dashboard</a>
           <a href="#" class="header-link">Logout</a>
         </div>
       </div>
     </header>
 
     <main class="admin-dashboard-section">
-      <h1 class="heading">Add New Product</h1>
+      <h1 class="heading">Edit Product</h1>
 
       <form class="form-product">
-        <div class="form-product-container">
+        <div class="form-container">
           <div class="groups">
-            <ul class="form-group">
-              <li class="field-block">
-                <label for="titleProduct" class="input-label">Title Product</label>
-                <input
-                  type="text"
-                  class="input-control"
-                  id="titleProduct"
-                  placeholder="Enter title product"
-                  required
-                />
-              </li>
-              <li class="field-block">
-                <label for="category" class="input-label">Category</label>
-                <select id="category" required>
-                  <option value="">Choose</option>
-                  <option value="Woman">Woman</option>
-                  <option value="Man">Man</option>
-                  <option value="Unisex">Unisex</option>
-                </select>
-              </li>
-              <li class="field-block">
-                <label for="priceProduct" class="input-label">Price</label>
-                <input
-                  type="number"
-                  class="input-control"
-                  id="priceProduct"
-                  placeholder="Enter price"
-                  required
-                />
-              </li>
-            </ul>
-
             <ul class="form-group">
               <li class="field-block">
                 <label for="imageProduct" class="input-label">Image URL</label>
@@ -63,6 +31,40 @@
                   class="input-control"
                   id="imageProduct"
                   accept="image/*"
+                />
+                <img
+                  id="previewImage"
+                  style="margin-top: 10px; max-width: 100%; display: none"
+                />
+              </li>
+              <li class="field-block">
+                <label for="titleProduct" class="input-label">Title Product</label>
+                <input
+                  type="text"
+                  class="input-control"
+                  id="titleProduct"
+                  readonly
+                />
+              </li>
+              <li class="field-block">
+                <label for="category" class="input-label">Category</label>
+                <input
+                  type="text"
+                  class="input-control"
+                  id="categoryProduct"
+                  readonly
+                />
+              </li>
+            </ul>
+
+            <ul class="form-group">
+              <li class="field-block">
+                <label for="priceProduct" class="input-label">Price</label>
+                <input
+                  type="number"
+                  class="input-control"
+                  id="priceProduct"
+                  placeholder="Enter price"
                   required
                 />
               </li>
@@ -78,7 +80,7 @@
               </li>
             </ul>
           </div>
-          <button type="submit" class="manage-product-btn btn">Add Product</button>
+          <button type="submit" class="manage-product-btn btn">Save Changes</button>
         </div>
       </form>
     </main>

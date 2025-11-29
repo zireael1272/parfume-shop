@@ -12,25 +12,25 @@
       <div class="container">
         <div class="header-container">
           <div class="header-nav">
-            <a href="index.html" class="logo">Parfume</a>
+            <a href="/" class="logo">Parfume</a>
             <div class="header-menu">
-              <a href="woman.html" class="header-link">Woman</a>
-              <a href="man.html" class="header-link">Man</a>
-              <a href="unisex.html" class="header-link">Unisex</a>
+              <a href="/woman" class="header-link">Woman</a>
+              <a href="/man" class="header-link">Man</a>
+              <a href="/unisex" class="header-link">Unisex</a>
             </div>
           </div>
           <div class="link-icons">
-            <a href="cart.html" class="cart-link">
+            <a href="/cart" class="cart-link">
               <svg class="header-control-icon" width="32" height="32">
                 <use href="./images/icons.svg#icon-bag"></use>
               </svg>
-              <span id="cart-count">0</span>
+              <span class="cart-count" id="cart-count">0</span>
             </a>
-            <a href="#" class="account">
+            <button type="button" class="account-btn" id="account-btn">
               <svg class="header-control-icon" width="32" height="32">
                 <use href="./images/icons.svg#icon-person-circle"></use>
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -46,13 +46,14 @@
             </div>
             <div class="cart-total">
               <div id="cartTotal"></div>
-              <a href="checkout.html" class="checkout-btn">Checkout</a>
+              <a href="/checkout" class="checkout-btn">Checkout</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <script src="/js/main.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -61,6 +62,5 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <script src="js/main.js"></script>
   </body>
 </html>

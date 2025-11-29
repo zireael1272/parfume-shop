@@ -16,10 +16,10 @@
 }
 
 .checkout-container {
-  display: grid;
-  grid-template-columns: 1.6fr 1.1fr;
-  gap: 20px;
-  padding: 20px 60px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 32px 32px;
 }
 
 .checkout-left {
@@ -30,53 +30,10 @@
 }
 
 .checkout-right {
-  position: relative;
-  padding: 30px;
-  height: fit-content;
-}
-
-h2 {
-  font-size: 2.6rem;
-  margin-bottom: 25px;
-}
-
-.title-order {
-  font-size: 2rem;
-}
-
-.checkout-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-.form-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 20px;
-}
-
-.left-column,
-.right-column {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.left-column .form-group {
-  max-width: 80%;
-}
-
-.form-group {
-  max-width: 45%;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-row {
-  display: flex;
-  gap: 20px;
+  gap: 24px;
+  padding: 40px;
 }
 
 #house,
@@ -88,52 +45,8 @@ h2 {
   margin-bottom: 0.6rem;
 }
 
-label {
-  font-size: 1.1rem;
-  margin-top: 0.6rem;
-  color: var(--main-accent-back);
-  font-weight: 600;
-}
-
-.form-group input,
-.form-group select {
-  border: none;
-  border-bottom: 2px solid var(--main-accent-back);
-  color: var(--main-accent-back);
-  padding: 8px 5px;
-  font-size: 1rem;
-  background: transparent;
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-  border-color: var(--blue-hover);
-}
-
 #phone {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-
-.checkout-btn,
-.payment-btn {
-  width: 100%;
-  height: 45px;
-  border: none;
-  border-radius: 5px;
-  margin-top: 20px;
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--main-text);
-  background: var(--main-accent-back);
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.checkout-btn:hover,
-.payment-btn:hover {
-  background-color: var(--blue-hover);
 }
 
 .hidden {

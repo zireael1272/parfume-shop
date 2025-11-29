@@ -16,7 +16,11 @@ app.use(express.json());
 app.use("/api", Router);
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "pages", "index.html"));
+});
+
+app.get("/:page", (req, res) => {
+  res.sendFile(path.join(__dirname, "pages", `${req.params.page}.html`));
 });
 
 mongoose
