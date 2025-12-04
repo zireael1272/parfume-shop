@@ -45,8 +45,8 @@ function displayCartItems() {
       <div class="cart-item-price">$${itemTotal.toFixed(2)}</div>
     </div>
     <div class="quantity-controls">
-      <button onclick="changeQuantity('${item.name}', -1)">
-        <ion-icon name="remove-outline"></ion-icon>
+      <button class="control-btn" onclick="changeQuantity('${item.name}', -1)">
+        -
       </button>
       <input
         type="text"
@@ -57,13 +57,15 @@ function displayCartItems() {
         onchange="updateQuantity('${item.name}', this.value)"
         readonly
       />
-      <button onclick="changeQuantity('${item.name}', 1)">
-        <ion-icon name="add-outline"></ion-icon>
+      <button class="control-btn"  onclick="changeQuantity('${item.name}', 1)">
+        +
       </button>
     </div>
-    <div class="remove-from-cart" onclick="removeItem('${item.name}')">
-      <ion-icon name="trash"></ion-icon>
-    </div>
+    <button type="button" class="remove-from-cart" onclick="removeItem('${item.name}')">
+    <svg class="icon-trash" width="32" height="32">
+    <use href="./images/icons.svg#icon-trash"></use>
+  </svg>
+    </button>
     `;
     cartContainer.appendChild(cartItem);
   });

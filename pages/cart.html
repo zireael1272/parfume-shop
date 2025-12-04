@@ -39,28 +39,81 @@
     <section class="cart-section section">
       <div class="container">
         <div class="cart-container">
-          <h2 class="cart-title">Shopping Cart</h2>
+          <h2 class="title-control">Shopping Cart</h2>
           <div class="cart-box">
             <div class="cart-data">
               <div class="cart-items" id="cartItems"></div>
             </div>
             <div class="cart-total">
-              <div id="cartTotal"></div>
-              <a href="/checkout" class="checkout-btn">Checkout</a>
+              <div class="cartTotal" id="cartTotal"></div>
+              <a href="/checkout" class="btn" id="checkout-btn">Checkout</a>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="wrapper" id="authModal">
+        <button type="button" class="close-btn" id="closeBtn">
+          <svg class="close-icon" width="28" height="28">
+            <use href="./images/icons.svg#icon-close"></use>
+          </svg>
+        </button>
+
+        <div class="form-box login active">
+          <h2 class="title-control">Login</h2>
+          <form id="loginForm">
+            <div class="input-box">
+              <span class="icon"><ion-icon name="mail"></ion-icon></span>
+              <input type="email" required />
+              <label>Email</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+              <input type="password" required />
+              <label>Password</label>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="login-register">
+              <p>
+                Don't have an account yet?
+                <a href="#" class="register-link">Registration</a>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <div class="form-box register">
+          <h2 class="title-control">Registration</h2>
+          <form id="registerForm">
+            <div class="input-box">
+              <span class="icon"><ion-icon name="mail"></ion-icon></span>
+              <input type="email" required />
+              <label>Email</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+              <input type="password" class="password" required />
+              <label>Password</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+              <input type="password" class="password-again" required />
+              <label>Repeat password</label>
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <div class="login-register">
+              <p>
+                Already have an account?
+                <a href="#" class="login-link">Login</a>
+              </p>
+            </div>
+          </form>
         </div>
       </div>
     </section>
 
     <script src="/js/main.js"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/access.js"></script>
   </body>
 </html>

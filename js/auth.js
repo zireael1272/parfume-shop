@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     if (isUserLoggedIn()) {
-      window.location.href = "account.html";
+      window.location.href = "/account";
     } else {
       wrapper.classList.add("active-popup");
       loginForm.classList.add("active");
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (response.ok) {
           localStorage.setItem("isLoggedIn", "true");
           localStorage.setItem("userEmail", email);
-          window.location.href = "account.html";
+          window.location.href = "/index";
         } else {
           alert(data.message || "Registration failed.");
         }
@@ -122,9 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
           localStorage.setItem("userEmail", email);
           localStorage.setItem("userRole", data.user.role);
           if (data.user.role === "admin") {
-            window.location.href = "admPanel.html";
+            window.location.href = "/admPanel";
           } else {
-            window.location.href = "account.html";
+            window.location.href = "/index";
           }
         } else {
           alert(data.message || "Login failed.");

@@ -37,7 +37,7 @@ function renderProducts(products) {
       <h2 class="product-title">${item.name}</h2>
       <p class="category">${item.category}</p>
       <p class="product-price">$${item.price}</p>
-      <a class="add-to-cart" onclick="addToCart(this.closest('.product'))">Add to cart</a>
+      <a class="add-to-cart-btn btn" onclick="addToCart(this.closest('.product'))">Add to cart</a>
     </div>
   `;
 

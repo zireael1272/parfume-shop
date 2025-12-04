@@ -1,6 +1,7 @@
 .cart-container {
   display: flex;
   flex-direction: column;
+  padding: 16px 0;
 }
 
 .cart-box {
@@ -52,28 +53,26 @@
 .quantity-controls {
   display: flex;
   align-items: center;
+  fill: var(--light-blue);
 }
 
-.quantity-controls button {
+.control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 32px;
   height: 32px;
   border: 1.6px solid var(--main-accent-back);
   background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 24px;
   font-weight: 500;
-  color: var(--light-blue);
+  color: var(--main-accent-back);
 }
 
-.quantity-controls button:hover {
+.control-btn:hover {
   background-color: var(--light-blue);
   border-color: var(--blue-hover);
-}
-
-.quantity-controls ion-icon {
-  color: var(--dark-blue);
-  font-size: 17px;
+  fill: var(--blue-hover);
 }
 
 .quantity-controls input {
@@ -86,37 +85,23 @@
   font-size: 0.95rem;
 }
 
-.remove-from-cart ion-icon {
-  color: var(--main-accent-back);
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.remove-from-cart ion-icon:hover {
-  color: var(--blue-hover);
-}
-
 .cart-total {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-#cartTotal {
-  font-size: 1.7rem;
+.cartTotal {
+  font-size: 32px;
   font-weight: 600;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.checkout-btn {
-  background: var(--main-accent-back);
-  color: var(--main-text);
-  text-align: center;
-  padding: 10px;
-  font-weight: 600;
-  width: 100%;
+.remove-from-cart {
+  background-color: transparent;
+  fill: var(--main-accent-back);
 }
 
-.checkout-btn:hover {
-  background: var(--blue-hover);
+.remove-from-cart:hover {
+  fill: var(--blue-hover);
 }

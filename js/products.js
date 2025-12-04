@@ -16,7 +16,7 @@ async function loadProducts() {
             <h2 class="product-title">${p.name}</h2>
             <p class="category">${p.category}</p>
             <p class="product-price">$${p.price}</p>
-            <a class="add-to-cart" onclick="addToCart(this.closest('.product'))">Add to cart</a>
+            <button type="button" class="add-to-cart-btn btn" onclick="addToCart(this.closest('.product'))">Add to cart</button>
           </div>
         `;
 
