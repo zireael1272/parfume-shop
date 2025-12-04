@@ -4,7 +4,7 @@
   gap: 20px;
 }
 
-.order-card {
+.order-card-adm {
   display: flex;
   width: 70%;
   background: var(--light-blue);
@@ -14,26 +14,26 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.order-info {
+.order-info-adm {
   display: flex;
   align-items: center;
   gap: 40px;
 }
 
-.order-info img {
+.order-info-adm img {
   width: 80px;
   height: 80px;
   object-fit: cover;
   border-radius: 8px;
 }
 
-.order-block {
+.order-block-adm {
   display: flex;
   gap: 24px;
   flex-basis: 70%;
 }
 
-.order-details {
+.order-details-adm {
   display: flex;
   flex-direction: column;
   gap: 8px;

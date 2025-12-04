@@ -26,47 +26,46 @@
               </svg>
               <span class="cart-count" id="cart-count">0</span>
             </a>
-            <button type="button" class="account-btn" id="account-btn">
-              <svg class="header-control-icon" width="32" height="32">
-                <use href="./images/icons.svg#icon-person-circle"></use>
-              </svg>
-            </button>
           </div>
         </div>
       </div>
     </header>
 
-    <div class="page-layout">
-      <nav class="vertical-nav">
-        <a href="#" data-section="contact">Contact information</a>
-        <a href="#" data-section="history">History</a>
-        <a href="#" data-section="logout">Out</a>
-      </nav>
+    <main class="account">
+      <div class="account-container">
+        <nav class="vertical-nav">
+          <a class="link" href="#" data-section="contact">Contact information</a>
+          <a class="link" href="#" data-section="history">History</a>
+          <a class="link" href="#" data-section="logout">Out</a>
+        </nav>
 
-      <main class="main-content">
-        <div id="contact" class="content-section">
-          <h2>Contact Information</h2>
-          <div class="contact-item">
-            <p>First and last name:</p>
-            <span class="personal-data"></span>
+        <div class="info-block">
+          <div class="contact-content" id="contact">
+            <h2 class="title-control">Contact Information</h2>
+            <div class="contact-info">
+              <div class="contact-item">
+                <p>First and last name:</p>
+                <span class="personal-data"></span>
+              </div>
+              <div class="contact-item">
+                <p>Email:</p>
+                <span class="email"></span>
+              </div>
+              <div class="contact-item">
+                <p>Phone:</p>
+                <span class="phone"></span>
+              </div>
+            </div>
           </div>
-          <div class="contact-item">
-            <p>Email:</p>
-            <span class="email"></span>
-          </div>
-          <div class="contact-item">
-            <p>Phone:</p>
-            <span class="phone"></span>
-          </div>
-        </div>
 
-        <div id="history" class="content-section">
-          <h2>History</h2>
-          <div class="orders-data" id="orderItems"></div>
+          <div id="history" class="content-section">
+            <h2 class="title-control">History</h2>
+            <div class="orders-data" id="orderItems"></div>
+          </div>
+          <button class="change-btn hidden">Change data</button>
         </div>
-        <button class="change-btn">Change data</button>
-      </main>
-    </div>
+      </div>
+    </main>
 
     <script src="/js/acc.js"></script>
     <script src="/js/history.js"></script>

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.closest("#adm-logout")) {
       e.preventDefault();
       localStorage.clear();
-      window.location.href = "index.html";
+      window.location.href = "/index";
     }
   });
 
@@ -37,15 +37,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   orders.forEach((order) => {
     const orderCard = document.createElement("div");
-    orderCard.className = "order-card";
+    orderCard.className = "order-card-adm";
 
     const firstProduct = order.products[0];
 
     orderCard.innerHTML = `
-      <div class="order-info">
-        <div class="order-block">
+      <div class="order-info-adm">
+        <div class="order-block-adm">
           <img src="${firstProduct.image}" alt="${firstProduct.name}" />
-          <div class="order-details">
+          <div class="order-details-adm">
             <p>Order Number: ${order.id}</p>
             <p>Total: $${order.total.toFixed(2)}</p>
             <p>Products: ${

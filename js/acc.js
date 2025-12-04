@@ -1,10 +1,16 @@
 const navLinks = document.querySelectorAll(".vertical-nav a");
-const sections = document.querySelectorAll(".content-section");
+const contactSection = document.getElementById("contact");
+const historySection = document.getElementById("history");
 
 function showSection(sectionId) {
-  sections.forEach((sec) => (sec.style.display = "none"));
-  const activeSection = document.getElementById(sectionId);
-  if (activeSection) activeSection.style.display = "block";
+  contactSection.style.display = "none";
+  historySection.style.display = "none";
+
+  if (sectionId === "contact") {
+    contactSection.style.display = "flex";
+  } else if (sectionId === "history") {
+    historySection.style.display = "block";
+  }
 
   navLinks.forEach((l) => l.classList.remove("active"));
   const activeLink = document.querySelector(
@@ -20,7 +26,7 @@ navLinks.forEach((link) => {
 
     if (sectionId === "logout") {
       localStorage.clear();
-      window.location.href = "main.html";
+      window.location.href = "/index";
       return;
     }
 
