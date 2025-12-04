@@ -99,6 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     localStorage.removeItem("cartItems");
-    window.location.href = "success.html";
+    window.location.href = "/success";
   });
 });
