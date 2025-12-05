@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "es6",
+    "outDir": "./js",
+    "strict": true
+  },
+  "include": ["tsc"]
+}

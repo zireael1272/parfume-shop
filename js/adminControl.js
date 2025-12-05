@@ -1,84 +1,70 @@
+"use strict";
 document.addEventListener("DOMContentLoaded", () => {
-  document.body.addEventListener("click", (e) => {
-    if (e.target.closest("#adm-logout")) {
-      e.preventDefault();
-      localStorage.clear();
-      window.location.href = "/index";
-    }
-  });
-
-  const ordersContainer = document.getElementById("ordersContainer");
-  if (!ordersContainer) return;
-
-  const orders = [
-    {
-      id: 1,
-      products: [
-        { name: "Blanche", quantity: 1, price: 189.2, image: "images/blanche.png" },
-      ],
-      total: 189.2,
-      status: "Pending",
-    },
-    {
-      id: 2,
-      products: [
+    document.body.addEventListener("click", (e) => {
+        if (e.target instanceof Element && e.target.closest("#adm-logout")) {
+            e.preventDefault();
+            localStorage.clear();
+            window.location.href = "/index";
+        }
+    });
+    const ordersContainer = document.getElementById("ordersContainer");
+    if (!ordersContainer)
+        return;
+    const orders = [
         {
-          name: "Angels Share",
-          quantity: 2,
-          price: 336.5,
-          image: "images/angel.png",
+            id: 1,
+            products: [
+                { name: "Blanche", quantity: 1, price: 189.2, image: "images/blanche.png" },
+            ],
+            total: 189.2,
+            status: "Pending",
         },
-        { name: "Cloud", quantity: 1, price: 63.1, image: "images/cloud.png" },
-      ],
-      total: 736.1,
-      status: "Pending",
-    },
-  ];
-
-  orders.forEach((order) => {
-    const orderCard = document.createElement("div");
-    orderCard.className = "order-card-adm";
-
-    const firstProduct = order.products[0];
-
-    orderCard.innerHTML = `
+        {
+            id: 2,
+            products: [
+                {
+                    name: "Angels Share",
+                    quantity: 2,
+                    price: 336.5,
+                    image: "images/angel.png",
+                },
+                { name: "Cloud", quantity: 1, price: 63.1, image: "images/cloud.png" },
+            ],
+            total: 736.1,
+            status: "Pending",
+        },
+    ];
+    orders.forEach((order) => {
+        const orderCard = document.createElement("div");
+        orderCard.className = "order-card-adm";
+        const firstProduct = order.products[0];
+        orderCard.innerHTML = `
       <div class="order-info-adm">
         <div class="order-block-adm">
           <img src="${firstProduct.image}" alt="${firstProduct.name}" />
           <div class="order-details-adm">
             <p>Order Number: ${order.id}</p>
             <p>Total: $${order.total.toFixed(2)}</p>
-            <p>Products: ${
-              order.products.length > 1
-                ? firstProduct.name + " + " + (order.products.length - 1) + " more"
-                : firstProduct.name
-            }</p>
+            <p>Products: ${order.products.length > 1
+            ? firstProduct.name + " + " + (order.products.length - 1) + " more"
+            : firstProduct.name}</p>
           </div>
         </div>
         <select class="status-select">
-        <option value="Pending" ${
-          order.status === "Pending" ? "selected" : ""
-        }>Pending</option>
-        <option value="Shipped" ${
-          order.status === "Shipped" ? "selected" : ""
-        }>Shipped</option>
-        <option value="Delivered" ${
-          order.status === "Delivered" ? "selected" : ""
-        }>Delivered</option>
-        <option value="Canceled" ${
-          order.status === "Canceled" ? "selected" : ""
-        }>Canceled</option>
+        <option value="Pending" ${order.status === "Pending" ? "selected" : ""}>Pending</option>
+        <option value="Shipped" ${order.status === "Shipped" ? "selected" : ""}>Shipped</option>
+        <option value="Delivered" ${order.status === "Delivered" ? "selected" : ""}>Delivered</option>
+        <option value="Canceled" ${order.status === "Canceled" ? "selected" : ""}>Canceled</option>
       </select>
       </div>
       
     `;
-
-    const select = orderCard.querySelector(".status-select");
-    select.addEventListener("change", (e) => {
-      order.status = e.target.value;
-      alert(`Order ${order.id} status changed to ${order.status}`);
+        const select = orderCard.querySelector(".status-select");
+        select === null || select === void 0 ? void 0 : select.addEventListener("change", (e) => {
+            const target = e.target;
+            order.status = target.value;
+            alert(`Order ${order.id} status changed to ${order.status}`);
+        });
+        ordersContainer.appendChild(orderCard);
     });
-
-    ordersContainer.appendChild(orderCard);
-  });
 });

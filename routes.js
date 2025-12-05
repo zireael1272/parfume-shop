@@ -41,7 +41,7 @@ router.post("/login", async (req, res) => {
 
     res.json({
       message: "Login successful",
-      user: { email: user.email, role: user.role },
+      user: { id: user._id, email: user.email, role: user.role },
     });
   } catch (err) {
     console.error("LOGIN ERROR:", err);
@@ -60,6 +60,40 @@ router.get("/products", async (req, res) => {
     res.json(products);
   } catch (err) {
     res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.post("/order", async (req, res) => {
+  try {
+    const { userId, listItems, sum, address, deliveryMethodId } = req.body;
+
+    if (!userId || !listItems || !sum || !address) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    // 1) Создаём адрес
+    const newAddress = new Address({
+      userId,
+      ...address,
+    });
+    await newAddress.save();
+
+    // 2) Создаём заказ
+    const newOrder = new Order({
+      userId,
+      listItems,
+      sum,
+      addressId: newAddress._id,
+      deliveryMethodId, // пока пусть фронт передаёт null
+      status: "Paid",
+    });
+
+    await newOrder.save();
+
+    res.status(201).json({ message: "Order saved", orderId: newOrder._id });
+  } catch (err) {
+    console.error("ORDER ERROR:", err);
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 });
 
