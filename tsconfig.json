@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "es6",
-    "outDir": "./js",
+    "outDir": "public/js",
     "strict": true
   },
-  "include": ["tsc"]
+  "include": ["public/tsc"]
 }

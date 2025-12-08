@@ -11,16 +11,27 @@ const Mongo = process.env.MONGO_URL;
 const app = express();
 const __dirname = path.resolve();
 
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use("/api", Router);
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "pages", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "pages", "index.html"));
 });
 
 app.get("/:page", (req, res) => {
-  res.sendFile(path.join(__dirname, "pages", `${req.params.page}.html`));
+  const page = req.params.page;
+
+  if (page.includes(".")) {
+    return res.status(404).send("File not found");
+  }
+
+  res.sendFile(path.join(__dirname, "public", "pages", `${page}.html`), (err) => {
+    if (err) {
+      console.log(`Error load: ${page}`);
+      res.status(404).send("Page not found");
+    }
+  });
 });
 
 mongoose
@@ -31,5 +42,5 @@ mongoose
   .catch((error) => console.error("DB connection error:", error));
 
 app.listen(PORT, () => {
-  console.log("listing on port 3000");
+  console.log(`Listening on port ${PORT}`);
 });
