@@ -33,6 +33,7 @@
 }
 
 .info-block {
+  position: relative;
   width: 100%;
   max-width: 800px;
   height: 100%;
@@ -55,6 +56,32 @@
   gap: 16px;
 }
 
+.input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--main-accent-back);
+  outline: none;
+  color: var(--main-accent-back);
+  font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+.input:focus {
+  border: 0;
+  border-bottom: 1px solid var(--blue-hover);
+}
+
+.address-container {
+  display: flex;
+  gap: 12px;
+}
+
 .change-btn {
-  bottom: 0;
+  position: absolute;
+  max-width: 160px;
+  width: 100%;
+  bottom: 24px;
+  left: 24px;
+  border: none;
 }

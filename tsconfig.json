@@ -5,5 +5,5 @@
     "outDir": "public/js",
     "strict": true
   },
-  "include": ["public/tsc"]
+  "include": ["tsc"]
 }

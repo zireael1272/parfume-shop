@@ -4,8 +4,8 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: { type: String, default: "user" },
-  fullname: { type: String, required: true, unique: true },
-  phone: { type: String, required: true, unique: true },
+  fullname: { type: String },
+  phone: { type: String, unique: true },
 });
 
 export default mongoose.model("User", userSchema);

@@ -44,30 +44,45 @@
             <h2 class="title-control">Contact Information</h2>
             <div class="contact-info">
               <div class="contact-item">
-                <p>First and last name:</p>
-                <span class="personal-data"></span>
+                <label for="personal-data">First and last name:</label>
+                <input type="text" class="input" id="personal-data" readonly />
               </div>
               <div class="contact-item">
-                <p>Email:</p>
-                <span class="email"></span>
+                <label for="email">Email:</label>
+                <input type="email" class="input" id="email" readonly />
               </div>
               <div class="contact-item">
-                <p>Phone:</p>
-                <span class="phone"></span>
+                <label for="phone">Phone:</label>
+                <input type="tel" class="input" id="phone" readonly />
+              </div>
+              <div class="address-container">
+                <label>Address:</label>
+                <select id="city" class="input" aria-readonly="true">
+                  <option value=""></option>
+                  <option value="Zaporizhzhia">Zaporizhzhia</option>
+                  <option value="Kyiv">Kyiv</option>
+                  <option value="Lviv">Lviv</option>
+                </select>
+                <input type="text" class="input" id="street" readonly />
+                <input type="number" class="input small" id="home" readonly />
+                <input type="number" class="input small" id="apartment" readonly />
               </div>
             </div>
+            <button type="submit" class="change-btn btn" id="change-btn">
+              Change data
+            </button>
           </div>
 
           <div id="history" class="content-section">
             <h2 class="title-control">History</h2>
             <div class="orders-data" id="orderItems"></div>
           </div>
-          <button class="change-btn btn" id="change-btn">Change data</button>
         </div>
       </div>
     </main>
 
     <script src="/js/acc.js"></script>
+    <script src="../js/validaton.js"></script>
     <script src="/js/history.js"></script>
   </body>
 </html>

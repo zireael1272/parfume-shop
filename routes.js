@@ -54,6 +54,52 @@ router.get("/users", async (req, res) => {
   res.json(users);
 });
 
+router.get("/user/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await User.findById(userId).select("-password");
+    const address = await Address.findOne({ userId: userId });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({
+      user,
+      address: address || {},
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.put("/user/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const { fullname, phone, city, street, house, apartment } = req.body;
+
+    await User.findByIdAndUpdate(userId, { fullname, phone });
+
+    await Address.findOneAndUpdate(
+      { userId: userId },
+      {
+        userId: userId,
+        city,
+        street,
+        house,
+        apartment,
+      },
+      { upsert: true, new: true, setDefaultsOnInsert: true }
+    );
+
+    res.json({ message: "Data updated successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error updating data", error: err.message });
+  }
+});
+
 router.get("/products", async (req, res) => {
   try {
     const products = await Product.find();
@@ -63,38 +109,37 @@ router.get("/products", async (req, res) => {
   }
 });
 
-router.post("/order", async (req, res) => {
-  try {
-    const { userId, listItems, sum, address, deliveryMethodId } = req.body;
+// router.post("/order", async (req, res) => {
+//   try {
+//     const { userId, listItems, sum, address, deliveryMethodId } = req.body;
 
-    if (!userId || !listItems || !sum || !address) {
-      return res.status(400).json({ message: "Missing required fields" });
-    }
+//     if (!userId || !listItems || !sum || !address) {
+//       return res.status(400).json({ message: "Missing required fields" });
+//     }
 
-    // 1) Создаём адрес
-    const newAddress = new Address({
-      userId,
-      ...address,
-    });
-    await newAddress.save();
+//     // 1) Создаём адрес
+//     const newAddress = new Address({
+//       userId,
+//       ...address,
+//     });
+//     await newAddress.save();
 
-    // 2) Создаём заказ
-    const newOrder = new Order({
-      userId,
-      listItems,
-      sum,
-      addressId: newAddress._id,
-      deliveryMethodId, // пока пусть фронт передаёт null
-      status: "Paid",
-    });
+//     const newOrder = new Order({
+//       userId,
+//       listItems,
+//       sum,
+//       addressId: newAddress._id,
+//       deliveryMethodId, // пока пусть фронт передаёт null
+//       status: "Paid",
+//     });
 
-    await newOrder.save();
+//     await newOrder.save();
 
-    res.status(201).json({ message: "Order saved", orderId: newOrder._id });
-  } catch (err) {
-    console.error("ORDER ERROR:", err);
-    res.status(500).json({ message: "Server error", error: err.message });
-  }
-});
+//     res.status(201).json({ message: "Order saved", orderId: newOrder._id });
+//   } catch (err) {
+//     console.error("ORDER ERROR:", err);
+//     res.status(500).json({ message: "Server error", error: err.message });
+//   }
+// });
 
 export default router;
