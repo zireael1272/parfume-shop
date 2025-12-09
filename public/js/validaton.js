@@ -54,8 +54,10 @@ if (changeBtn) {
     }));
 }
 function startEditing() {
-    allInputs.forEach((input) => {
+    allInputs.forEach((element) => {
+        const input = element;
         input.removeAttribute("readonly");
+        input.disabled = false;
     });
     if (changeBtn)
         changeBtn.innerText = "Save data";
@@ -103,8 +105,10 @@ function saveData() {
     return __awaiter(this, void 0, void 0, function* () {
         const isSaved = yield updateUserData();
         if (isSaved) {
-            allInputs.forEach((input) => {
+            allInputs.forEach((element) => {
+                const input = element;
                 input.setAttribute("readonly", "true");
+                input.disabled = true;
                 input.classList.remove("error");
             });
             if (changeBtn)

@@ -52,8 +52,10 @@ if (changeBtn) {
 }
 
 function startEditing() {
-  allInputs.forEach((input) => {
+  allInputs.forEach((element) => {
+    const input = element as HTMLInputElement;
     input.removeAttribute("readonly");
+    input.disabled = false;
   });
   if (changeBtn) changeBtn.innerText = "Save data";
 }
@@ -102,8 +104,10 @@ async function saveData() {
   const isSaved = await updateUserData();
 
   if (isSaved) {
-    allInputs.forEach((input) => {
+    allInputs.forEach((element) => {
+      const input = element as HTMLInputElement;
       input.setAttribute("readonly", "true");
+      input.disabled = true;
       input.classList.remove("error");
     });
 
