@@ -45,27 +45,42 @@
             <div class="contact-info">
               <div class="contact-item">
                 <label for="personal-data">First and last name:</label>
-                <input type="text" class="input" id="personal-data" readonly />
+                <input
+                  type="text"
+                  class="input-control"
+                  id="personal-data"
+                  readonly
+                />
               </div>
               <div class="contact-item">
                 <label for="email">Email:</label>
-                <input type="email" class="input" id="email" readonly />
+                <input type="email" class="input-control" id="email" readonly />
               </div>
               <div class="contact-item">
                 <label for="phone">Phone:</label>
-                <input type="tel" class="input" id="phone" readonly />
+                <input type="tel" class="input-control" id="phone" readonly />
               </div>
               <div class="address-container">
                 <label>Address:</label>
-                <select id="city" class="input" disabled>
+                <select id="city" class="input-control" disabled>
                   <option value=""></option>
                   <option value="Zaporizhzhia">Zaporizhzhia</option>
                   <option value="Kyiv">Kyiv</option>
                   <option value="Lviv">Lviv</option>
                 </select>
-                <input type="text" class="input" id="street" readonly />
-                <input type="number" class="input small" id="home" readonly />
-                <input type="number" class="input small" id="apartment" readonly />
+                <input type="text" class="input-control" id="street" readonly />
+                <input
+                  type="number"
+                  class="input-control small"
+                  id="home"
+                  readonly
+                />
+                <input
+                  type="number"
+                  class="input-control small"
+                  id="apartment"
+                  readonly
+                />
               </div>
             </div>
             <button type="submit" class="change-btn btn" id="change-btn">

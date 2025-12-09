@@ -54,11 +54,30 @@ if (changeBtn) {
     }));
 }
 function startEditing() {
-    allInputs.forEach((element) => {
-        const input = element;
+    console.log("Включаем режим редактирования...");
+    if (nameInput) {
+        const input = nameInput;
         input.removeAttribute("readonly");
-        input.disabled = false;
+        input.classList.add("editable");
+    }
+    if (phoneInput) {
+        const input = phoneInput;
+        input.removeAttribute("readonly");
+        input.classList.add("editable");
+    }
+    if (citySelect) {
+        const select = citySelect;
+        select.disabled = false;
+        select.classList.add("editable");
+    }
+    [streetInput, houseInput, aptInput].forEach((el) => {
+        if (el) {
+            const input = el;
+            input.removeAttribute("readonly");
+            input.classList.add("editable");
+        }
     });
+    // Меняем текст кнопки
     if (changeBtn)
         changeBtn.innerText = "Save data";
 }
@@ -103,20 +122,23 @@ function validateForm() {
 }
 function saveData() {
     return __awaiter(this, void 0, void 0, function* () {
-        const isSaved = yield updateUserData();
-        if (isSaved) {
-            allInputs.forEach((element) => {
-                const input = element;
-                input.setAttribute("readonly", "true");
-                input.disabled = true;
-                input.classList.remove("error");
-            });
-            if (changeBtn)
-                changeBtn.innerText = "Change data";
-            console.log("Data save success!");
-        }
-        else {
-            console.log("Save failed, keeping edit mode open.");
+        const updateFunc = window.updateUserData;
+        if (updateFunc) {
+            const success = yield updateFunc();
+            if (success) {
+                allInputs.forEach((element) => {
+                    const input = element;
+                    input.setAttribute("readonly", "true");
+                    input.disabled = true;
+                    input.classList.remove("error");
+                });
+                if (changeBtn)
+                    changeBtn.innerText = "Change data";
+                console.log("Data save success!");
+            }
+            else {
+                console.log("Save failed, keeping edit mode open.");
+            }
         }
     });
 }

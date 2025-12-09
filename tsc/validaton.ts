@@ -52,11 +52,31 @@ if (changeBtn) {
 }
 
 function startEditing() {
-  allInputs.forEach((element) => {
-    const input = element as HTMLInputElement;
+  console.log("Включаем режим редактирования...");
+
+  if (nameInput) {
+    const input = nameInput as HTMLInputElement;
     input.removeAttribute("readonly");
-    input.disabled = false;
+  }
+
+  if (phoneInput) {
+    const input = phoneInput as HTMLInputElement;
+    input.removeAttribute("readonly");
+  }
+
+  if (citySelect) {
+    const select = citySelect as HTMLSelectElement;
+    select.disabled = false;
+  }
+
+  [streetInput, houseInput, aptInput].forEach((el) => {
+    if (el) {
+      const input = el as HTMLInputElement;
+      input.removeAttribute("readonly");
+    }
   });
+
+  // Меняем текст кнопки
   if (changeBtn) changeBtn.innerText = "Save data";
 }
 
@@ -101,19 +121,42 @@ function validateForm() {
 }
 
 async function saveData() {
-  const isSaved = await updateUserData();
+  const updateFunc = (window as any).updateUserData;
 
-  if (isSaved) {
-    allInputs.forEach((element) => {
-      const input = element as HTMLInputElement;
-      input.setAttribute("readonly", "true");
-      input.disabled = true;
-      input.classList.remove("error");
-    });
+  if (updateFunc) {
+    const success = await updateFunc();
 
-    if (changeBtn) changeBtn.innerText = "Change data";
-    console.log("Data save success!");
-  } else {
-    console.log("Save failed, keeping edit mode open.");
+    if (success) {
+      if (nameInput) {
+        const input = nameInput as HTMLInputElement;
+        input.setAttribute("readonly", "true");
+        input.classList.remove("error");
+      }
+
+      if (phoneInput) {
+        const input = phoneInput as HTMLInputElement;
+        input.setAttribute("readonly", "true");
+        input.classList.remove("error");
+      }
+
+      if (citySelect) {
+        const select = citySelect as HTMLSelectElement;
+        select.disabled = true;
+        select.classList.remove("error");
+      }
+
+      [streetInput, houseInput, aptInput].forEach((el) => {
+        if (el) {
+          const input = el as HTMLInputElement;
+          input.setAttribute("readonly", "true");
+          input.classList.remove("error");
+        }
+      });
+
+      if (changeBtn) changeBtn.innerText = "Change data";
+      console.log("Data save success!");
+    } else {
+      console.log("Save failed, keeping edit mode open.");
+    }
   }
 }

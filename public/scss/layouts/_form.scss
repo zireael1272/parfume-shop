@@ -39,14 +39,14 @@
 }
 
 .input-control {
-  border: none;
-  border-bottom: 2px solid var(--main-accent-back);
-  color: var(--main-accent-back);
-  padding: 8px 5px;
-  font-size: 32px;
-  background: transparent;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--main-accent-back);
   outline: none;
-  transition: border-color 0.3s;
+  color: var(--main-accent-back);
+  font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
 }
 
 .input-control::placeholder {
