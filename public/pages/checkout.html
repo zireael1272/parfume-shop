@@ -8,9 +8,12 @@
     <title>Checkout</title>
   </head>
   <body>
-    <a href="/cart" class="back-cart"
-      ><ion-icon name="chevron-back"></ion-icon> <span>Back To Cart</span></a
-    >
+    <a href="/cart" class="back-cart">
+      <svg class="icon-back" width="28" height="28">
+        <use href="./images/icons.svg#icon-back"></use>
+      </svg>
+      <span>Back To Cart</span>
+    </a>
 
     <div class="checkout-container">
       <div class="checkout-left">
@@ -142,14 +145,7 @@
       </div>
     </div>
 
+    <script src="/js/dataLoader.js"></script>
     <script src="/js/checkout.js"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
   </body>
 </html>

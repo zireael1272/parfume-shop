@@ -5,12 +5,12 @@ const AllInputs = document.querySelectorAll(
   ".contact-info .input, .contact-info select"
 );
 
-const nameInput = document.getElementById("personal-data");
+const nameInput = document.getElementById("fullName");
 const emailInput = document.getElementById("email");
 const phoneInput = document.getElementById("phone");
 const citySelect = document.getElementById("city");
 const streetInput = document.getElementById("street");
-const houseInput = document.getElementById("home");
+const houseInput = document.getElementById("house");
 const aptInput = document.getElementById("apartment");
 const userId = localStorage.getItem("userId");
 
@@ -98,32 +98,11 @@ async function updateUserData() {
 document.addEventListener("DOMContentLoaded", async () => {
   showSection("contact");
 
-  try {
-    const response = await fetch(`/api/user/${userId}`);
-    const data = await response.json();
-
-    if (response.ok) {
-      if (nameInput)
-        (nameInput as HTMLInputElement).value = data.user.fullname || "";
-      if (emailInput) (emailInput as HTMLInputElement).value = data.user.email;
-      if (phoneInput) (phoneInput as HTMLInputElement).value = data.user.phone || "";
-
-      if (data.address) {
-        if (citySelect)
-          (citySelect as HTMLInputElement).value = data.address.city || "";
-        if (streetInput)
-          (streetInput as HTMLInputElement).value = data.address.street || "";
-        if (houseInput)
-          (houseInput as HTMLInputElement).value = data.address.house || "";
-        if (aptInput)
-          (aptInput as HTMLInputElement).value = data.address.apartment || "";
-      }
-      console.log("Данные успешно загружены из БД");
-    } else {
-      console.error("Ошибка загрузки данных:", data.message);
-    }
-  } catch (error) {
-    console.error("Ошибка сети при загрузке:", error);
+  if (window.loadUserDataToForms) {
+    console.log("acc.js: Вызываем dataLoader...");
+    await window.loadUserDataToForms();
+  } else {
+    console.error("ОШИБКА: dataLoader.js не подключен в HTML!");
   }
 });
 

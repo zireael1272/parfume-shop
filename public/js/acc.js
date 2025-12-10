@@ -12,12 +12,12 @@ const navLinks = document.querySelectorAll(".vertical-nav a");
 const contactSection = document.getElementById("contact");
 const ChangeBtn = document.getElementById("change-btn");
 const AllInputs = document.querySelectorAll(".contact-info .input, .contact-info select");
-const nameInput = document.getElementById("personal-data");
+const nameInput = document.getElementById("fullName");
 const emailInput = document.getElementById("email");
 const phoneInput = document.getElementById("phone");
 const citySelect = document.getElementById("city");
 const streetInput = document.getElementById("street");
-const houseInput = document.getElementById("home");
+const houseInput = document.getElementById("house");
 const aptInput = document.getElementById("apartment");
 const userId = localStorage.getItem("userId");
 const historySection = document.getElementById("history");
@@ -97,34 +97,12 @@ function updateUserData() {
 }
 document.addEventListener("DOMContentLoaded", () => __awaiter(void 0, void 0, void 0, function* () {
     showSection("contact");
-    try {
-        const response = yield fetch(`/api/user/${userId}`);
-        const data = yield response.json();
-        if (response.ok) {
-            if (nameInput)
-                nameInput.value = data.user.fullname || "";
-            if (emailInput)
-                emailInput.value = data.user.email;
-            if (phoneInput)
-                phoneInput.value = data.user.phone || "";
-            if (data.address) {
-                if (citySelect)
-                    citySelect.value = data.address.city || "";
-                if (streetInput)
-                    streetInput.value = data.address.street || "";
-                if (houseInput)
-                    houseInput.value = data.address.house || "";
-                if (aptInput)
-                    aptInput.value = data.address.apartment || "";
-            }
-            console.log("Данные успешно загружены из БД");
-        }
-        else {
-            console.error("Ошибка загрузки данных:", data.message);
-        }
+    if (window.loadUserDataToForms) {
+        console.log("acc.js: Вызываем dataLoader...");
+        yield window.loadUserDataToForms();
     }
-    catch (error) {
-        console.error("Ошибка сети при загрузке:", error);
+    else {
+        console.error("ОШИБКА: dataLoader.js не подключен в HTML!");
     }
 }));
 window.updateUserData = updateUserData;

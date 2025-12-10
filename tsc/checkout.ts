@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
   let total = 0;
 
+  if (window.loadUserDataToForms) {
+    window.loadUserDataToForms();
+  }
+
   const orderData = {
     userId: localStorage.getItem("userId"),
     address: {},
@@ -59,13 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    orderData.userId = JSON.parse(localStorage.getItem("userId") ?? "")._id;
+    const storedUserId = localStorage.getItem("userId");
+    const userIdString = storedUserId;
+    orderData.userId = userIdString;
     orderData.listItems = cartItems;
     orderData.sum = total;
 
     orderData.address = {
-      fullName: name,
-      phone,
       city,
       street,
       house,
@@ -136,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const res = await fetch("/order", {
+      const res = await fetch("/api/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderData),

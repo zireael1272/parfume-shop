@@ -20,6 +20,7 @@ function loadProducts() {
             products.forEach((p) => {
                 const element = document.createElement("div");
                 element.classList.add("product");
+                element.setAttribute("data-id", p._id);
                 element.innerHTML = `
           <img src="${p.image}" class="product-img" alt="${p.name}">
           <div class="product-info">

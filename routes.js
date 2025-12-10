@@ -109,37 +109,67 @@ router.get("/products", async (req, res) => {
   }
 });
 
-// router.post("/order", async (req, res) => {
-//   try {
-//     const { userId, listItems, sum, address, deliveryMethodId } = req.body;
+router.post("/order", async (req, res) => {
+  try {
+    const { userId, address, listItems, sum } = req.body;
 
-//     if (!userId || !listItems || !sum || !address) {
-//       return res.status(400).json({ message: "Missing required fields" });
-//     }
+    if (!address) {
+      return res.status(400).json({ message: "Address is missing" });
+    }
 
-//     // 1) Создаём адрес
-//     const newAddress = new Address({
-//       userId,
-//       ...address,
-//     });
-//     await newAddress.save();
+    // 1. Объявляем переменную (исправление ReferenceError)
+    let addressString = "";
 
-//     const newOrder = new Order({
-//       userId,
-//       listItems,
-//       sum,
-//       addressId: newAddress._id,
-//       deliveryMethodId, // пока пусть фронт передаёт null
-//       status: "Paid",
-//     });
+    // 2. Формируем строку
+    if (typeof address === "object") {
+      const city = address.city || "";
+      const street = address.street || "";
+      const house = address.house || "";
+      const apt = address.apartment ? `, apt. ${address.apartment}` : "";
 
-//     await newOrder.save();
+      addressString = `${city}, ${street}, ${house}${apt}`;
+    } else {
+      addressString = String(address);
+    }
 
-//     res.status(201).json({ message: "Order saved", orderId: newOrder._id });
-//   } catch (err) {
-//     console.error("ORDER ERROR:", err);
-//     res.status(500).json({ message: "Server error", error: err.message });
-//   }
-// });
+    // Получаем метод доставки
+    let delivery = await DeliveryMethod.findOne({ type: "Courier" });
+    if (!delivery) {
+      delivery = await new DeliveryMethod({
+        type: "Courier",
+        estimatedDays: 3,
+      }).save();
+    }
+
+    const newOrder = new Order({
+      userId: userId,
+      listItems: listItems.map((item) => ({
+        productId: item.productId,
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price,
+        image: item.image,
+      })),
+      sum: sum,
+
+      // --- ВАЖНОЕ ИСПРАВЛЕНИЕ ---
+      // Было: addressId: addressString  <-- ОШИБКА
+      // Стало:
+      address: addressString, // <-- ПРАВИЛЬНО (как в модели)
+
+      deliveryMethodId: delivery._id,
+      status: "Paid",
+    });
+
+    await newOrder.save();
+
+    res
+      .status(201)
+      .json({ message: "Order created successfully", orderId: newOrder._id });
+  } catch (err) {
+    console.error("Order Save Error:", err);
+    res.status(500).json({ message: "Error creating order", error: err.message });
+  }
+});
 
 export default router;

@@ -19,9 +19,8 @@ const orderSchema = new mongoose.Schema({
 
   sum: { type: Number, required: true },
 
-  addressId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Address",
+  address: {
+    type: String,
     required: true,
   },
 

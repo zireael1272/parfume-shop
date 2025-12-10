@@ -58,23 +58,19 @@ function startEditing() {
     if (nameInput) {
         const input = nameInput;
         input.removeAttribute("readonly");
-        input.classList.add("editable");
     }
     if (phoneInput) {
         const input = phoneInput;
         input.removeAttribute("readonly");
-        input.classList.add("editable");
     }
     if (citySelect) {
         const select = citySelect;
         select.disabled = false;
-        select.classList.add("editable");
     }
     [streetInput, houseInput, aptInput].forEach((el) => {
         if (el) {
             const input = el;
             input.removeAttribute("readonly");
-            input.classList.add("editable");
         }
     });
     // Меняем текст кнопки
@@ -126,11 +122,27 @@ function saveData() {
         if (updateFunc) {
             const success = yield updateFunc();
             if (success) {
-                allInputs.forEach((element) => {
-                    const input = element;
+                if (nameInput) {
+                    const input = nameInput;
                     input.setAttribute("readonly", "true");
-                    input.disabled = true;
                     input.classList.remove("error");
+                }
+                if (phoneInput) {
+                    const input = phoneInput;
+                    input.setAttribute("readonly", "true");
+                    input.classList.remove("error");
+                }
+                if (citySelect) {
+                    const select = citySelect;
+                    select.disabled = true;
+                    select.classList.remove("error");
+                }
+                [streetInput, houseInput, aptInput].forEach((el) => {
+                    if (el) {
+                        const input = el;
+                        input.setAttribute("readonly", "true");
+                        input.classList.remove("error");
+                    }
                 });
                 if (changeBtn)
                     changeBtn.innerText = "Change data";

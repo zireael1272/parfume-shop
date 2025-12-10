@@ -8,9 +8,16 @@ async function loadProducts() {
     list.innerHTML = "";
 
     products.forEach(
-      (p: { image: any; name: string; category: string; price: number }) => {
+      (p: {
+        _id: any;
+        image: any;
+        name: string;
+        category: string;
+        price: number;
+      }) => {
         const element = document.createElement("div");
         element.classList.add("product");
+        element.setAttribute("data-id", p._id);
 
         element.innerHTML = `
           <img src="${p.image}" class="product-img" alt="${p.name}">

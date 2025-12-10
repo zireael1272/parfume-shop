@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const PaymentBtn = document.getElementById("payment-btn");
     const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
     let total = 0;
+    if (window.loadUserDataToForms) {
+        window.loadUserDataToForms();
+    }
     const orderData = {
         userId: localStorage.getItem("userId"),
         address: {},
@@ -46,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!toPaymentBtn)
         return;
     toPaymentBtn.addEventListener("click", () => {
-        var _a;
         const nameinp = document.getElementById("fullName");
         const name = nameinp.value.trim();
         const phoneinp = document.getElementById("phone");
@@ -63,12 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Please fill in all fields.");
             return;
         }
-        orderData.userId = JSON.parse((_a = localStorage.getItem("userId")) !== null && _a !== void 0 ? _a : "")._id;
+        const storedUserId = localStorage.getItem("userId");
+        const userIdString = storedUserId;
+        orderData.userId = userIdString;
         orderData.listItems = cartItems;
         orderData.sum = total;
         orderData.address = {
-            fullName: name,
-            phone,
             city,
             street,
             house,
@@ -133,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         try {
-            const res = yield fetch("/order", {
+            const res = yield fetch("/api/order", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(orderData),

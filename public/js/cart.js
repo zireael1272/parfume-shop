@@ -1,6 +1,11 @@
 "use strict";
 let cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
 function addToCart(productCard) {
+    const productId = productCard.getAttribute("data-id");
+    if (!productId) {
+        console.error("Ошибка: У товара нет ID! Проверьте products.js");
+        return;
+    }
     const name = productCard.querySelector(".product-title").textContent;
     const priceText = productCard.querySelector(".product-price").textContent;
     const price = parseFloat(priceText.replace("$", ""));
@@ -8,9 +13,12 @@ function addToCart(productCard) {
     const existingItem = cartItems.find((item) => item.name === name);
     if (existingItem) {
         existingItem.quantity += 1;
+        if (!existingItem.productId)
+            existingItem.productId = productId;
     }
     else {
         cartItems.push({
+            productId,
             name,
             price,
             quantity: 1,

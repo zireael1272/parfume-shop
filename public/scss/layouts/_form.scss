@@ -35,7 +35,6 @@
   font-size: 20px;
   margin-top: 12px;
   color: var(--main-accent-back);
-  font-weight: 600;
 }
 
 .input-control {
@@ -51,6 +50,7 @@
 
 .input-control::placeholder {
   color: var(--dark-blue);
+  font-weight: 300;
 }
 
 .group-row {
