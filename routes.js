@@ -100,6 +100,27 @@ router.put("/user/:id", async (req, res) => {
   }
 });
 
+router.post("/productAdd", async (req, res) => {
+  try {
+    const { title, category, price, image, stock } = req.body;
+
+    const newProduct = new Product({
+      title,
+      category,
+      price,
+      image,
+      stock,
+    });
+
+    await newProduct.save();
+
+    res.status(201).json({ message: "Product added successfully" });
+  } catch (err) {
+    console.error("Error adding product:", err);
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+});
+
 router.get("/products", async (req, res) => {
   try {
     const products = await Product.find();
@@ -117,10 +138,8 @@ router.post("/order", async (req, res) => {
       return res.status(400).json({ message: "Address is missing" });
     }
 
-    // 1. Объявляем переменную (исправление ReferenceError)
     let addressString = "";
 
-    // 2. Формируем строку
     if (typeof address === "object") {
       const city = address.city || "";
       const street = address.street || "";
@@ -132,14 +151,7 @@ router.post("/order", async (req, res) => {
       addressString = String(address);
     }
 
-    // Получаем метод доставки
     let delivery = await DeliveryMethod.findOne({ type: "Courier" });
-    if (!delivery) {
-      delivery = await new DeliveryMethod({
-        type: "Courier",
-        estimatedDays: 3,
-      }).save();
-    }
 
     const newOrder = new Order({
       userId: userId,
@@ -151,11 +163,7 @@ router.post("/order", async (req, res) => {
         image: item.image,
       })),
       sum: sum,
-
-      // --- ВАЖНОЕ ИСПРАВЛЕНИЕ ---
-      // Было: addressId: addressString  <-- ОШИБКА
-      // Стало:
-      address: addressString, // <-- ПРАВИЛЬНО (как в модели)
+      address: addressString,
 
       deliveryMethodId: delivery._id,
       status: "Paid",

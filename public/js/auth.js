@@ -30,10 +30,19 @@ document.addEventListener("DOMContentLoaded", () => {
     function isUserLoggedIn() {
         return localStorage.getItem("isLoggedIn") === "true";
     }
+    function getUserRole() {
+        return localStorage.getItem("userRole");
+    }
     (_a = document.querySelector(".account-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", (e) => {
         e.preventDefault();
         if (isUserLoggedIn()) {
-            window.location.href = "/account";
+            const role = getUserRole();
+            if (role === "admin") {
+                window.location.href = "/admPanel";
+            }
+            else {
+                window.location.href = "/account";
+            }
         }
         else {
             wrapper.classList.add("active-popup");

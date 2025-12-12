@@ -17,11 +17,21 @@ document.addEventListener("DOMContentLoaded", () => {
     return localStorage.getItem("isLoggedIn") === "true";
   }
 
+  function getUserRole() {
+    return localStorage.getItem("userRole");
+  }
+
   document.querySelector(".account-btn")?.addEventListener("click", (e) => {
     e.preventDefault();
 
     if (isUserLoggedIn()) {
-      window.location.href = "/account";
+      const role = getUserRole();
+
+      if (role === "admin") {
+        window.location.href = "/admPanel";
+      } else {
+        window.location.href = "/account";
+      }
     } else {
       wrapper.classList.add("active-popup");
       loginForm.classList.add("active");
