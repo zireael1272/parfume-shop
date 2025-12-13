@@ -1,5 +1,8 @@
 .admin-dashboard-section {
   padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .admin-container {
@@ -47,4 +50,47 @@
 .admin-btn:hover {
   background: var(--blue-hover);
   color: var(--main-text);
+}
+
+.previewImage {
+  margin-top: 10px;
+  max-width: 100%;
+  display: none;
+}
+
+.order-card-content {
+  display: flex;
+  justify-content: space-between;
+  background: var(--grey);
+  border-radius: 12px;
+  padding: 24px 48px;
+}
+
+.order-details-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-basis: 50%;
+}
+
+.orderImg {
+  width: 80px;
+  height: 80px;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: end;
+}
+
+.item {
+  margin-left: 8px;
 }

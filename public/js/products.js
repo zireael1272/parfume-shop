@@ -22,9 +22,9 @@ function loadProducts() {
                 element.classList.add("product");
                 element.setAttribute("data-id", p._id);
                 element.innerHTML = `
-          <img src="${p.image}" class="product-img" alt="${p.name}">
+          <img src="${p.image}" class="product-img" alt="${p.title}">
           <div class="product-info">
-            <h2 class="product-title">${p.name}</h2>
+            <h2 class="product-title">${p.title}</h2>
             <p class="category">${p.category}</p>
             <p class="product-price">$${p.price}</p>
             <button type="button" class="add-to-cart-btn btn" onclick="addToCart(this.closest('.product'))">Add to cart</button>

@@ -20,6 +20,13 @@
     <main class="admin-dashboard-section">
       <h1 class="heading">Edit Product</h1>
 
+      <div class="select-container" style="margin-bottom: 20px; max-width: 600px">
+        <label class="input-label">Select Product to Edit</label>
+        <select id="productSelector" class="input-control">
+          <option value="">-- Choose a product --</option>
+        </select>
+      </div>
+
       <form class="form-product">
         <div class="form-container">
           <div class="groups">
@@ -32,10 +39,7 @@
                   id="imageProduct"
                   accept="image/*"
                 />
-                <img
-                  id="previewImage"
-                  style="margin-top: 10px; max-width: 100%; display: none"
-                />
+                <img class="previewImage" id="previewImage" />
               </li>
               <li class="field-block">
                 <label for="titleProduct" class="input-label">Title Product</label>
@@ -65,6 +69,7 @@
                   class="input-control"
                   id="priceProduct"
                   placeholder="Enter price"
+                  step="0.01"
                   required
                 />
               </li>
@@ -84,5 +89,7 @@
         </div>
       </form>
     </main>
+    <script src="/js/editProduct.js"></script>
+    <script src="/js/adminControl.js"></script>
   </body>
 </html>

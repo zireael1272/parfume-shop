@@ -130,6 +130,29 @@ router.get("/products", async (req, res) => {
   }
 });
 
+router.put("/products/:id", async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const { price, stock, image } = req.body;
+
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    if (price) product.price = price;
+    if (stock) product.stock = stock;
+    if (image) product.image = image;
+
+    await product.save();
+
+    res.json({ message: "Product updated successfully", product });
+  } catch (err) {
+    console.error("Update Error:", err);
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+});
+
 router.post("/order", async (req, res) => {
   try {
     const { userId, address, listItems, sum } = req.body;
@@ -177,6 +200,45 @@ router.post("/order", async (req, res) => {
   } catch (err) {
     console.error("Order Save Error:", err);
     res.status(500).json({ message: "Error creating order", error: err.message });
+  }
+});
+
+router.get("/orders", async (req, res) => {
+  try {
+    const orders = await Order.find()
+      .populate("userId", "email fullname phone")
+      .populate("deliveryMethodId")
+      .sort({ createdAt: -1 });
+
+    res.json(orders);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.put("/orders/:id", async (req, res) => {
+  try {
+    const { status, deliveryMethodId } = req.body;
+
+    await Order.findByIdAndUpdate(req.params.id, {
+      status: status,
+      deliveryMethodId: deliveryMethodId,
+    });
+
+    res.json({ message: "Order updated successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.get("/delivery-methods", async (req, res) => {
+  try {
+    const methods = await DeliveryMethod.find();
+    res.json(methods);
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
   }
 });
 
