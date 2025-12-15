@@ -31,8 +31,19 @@ function addToCart(productCard) {
 function displayCartItems() {
     const cartContainer = document.getElementById("cartItems");
     const totalElement = document.getElementById("cartTotal");
+    const clearBtn = document.getElementById("clear-button");
     if (!cartContainer)
         return;
+    if (cartItems.length === 0) {
+        cartContainer.innerHTML = `<p class="empty-cart-message">Your cart is empty</p>`;
+        if (totalElement)
+            totalElement.textContent = "Total: $0.00";
+        if (clearBtn)
+            clearBtn.classList.add("hidden");
+        return;
+    }
+    if (clearBtn)
+        clearBtn.classList.remove("hidden");
     cartContainer.innerHTML = "";
     let total = 0;
     cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
@@ -76,6 +87,12 @@ function displayCartItems() {
         totalElement.textContent = `Total: $${total.toFixed(2)}`;
     }
 }
+function clearCart() {
+    cartItems = [];
+    localStorage.setItem("cartItems", "[]");
+    updateCartCount();
+    displayCartItems();
+}
 function removeItem(name) {
     cartItems = cartItems.filter((item) => item.name !== name);
     updateLocalStorage();
@@ -109,6 +126,10 @@ window.onload = function () {
     updateCartCount();
     if (document.getElementById("cartItems")) {
         displayCartItems();
+    }
+    const clearBtn = document.getElementById("clear-button");
+    if (clearBtn) {
+        clearBtn.addEventListener("click", clearCart);
     }
     const checkoutBtn = document.querySelector("#checkout-btn");
     if (checkoutBtn) {

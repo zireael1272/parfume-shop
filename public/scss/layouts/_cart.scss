@@ -105,3 +105,11 @@
 .remove-from-cart:hover {
   fill: var(--blue-hover);
 }
+
+.empty-cart-message {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  padding: 40px 0;
+  width: 100%;
+}
