@@ -18,7 +18,6 @@ function loadUserDataToForms() {
             const data = yield response.json();
             if (response.ok) {
                 console.log("dataLoader: Данные загружены");
-                // Теперь ID везде одинаковые!
                 const nameInp = document.getElementById("fullName");
                 const emailInp = document.getElementById("email");
                 const phoneInp = document.getElementById("phone");

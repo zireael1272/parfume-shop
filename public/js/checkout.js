@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const orderData = {
         userId: localStorage.getItem("userId"),
+        fullname: "",
+        phone: "",
         address: {},
         listItems: cartItems,
         sum: 0,
@@ -49,25 +51,27 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!toPaymentBtn)
         return;
     toPaymentBtn.addEventListener("click", () => {
-        const nameinp = document.getElementById("fullName");
-        const name = nameinp.value.trim();
-        const phoneinp = document.getElementById("phone");
-        const phone = phoneinp.value.trim();
-        const cityinp = document.getElementById("city");
-        const city = cityinp.value.trim();
-        const streetinp = document.getElementById("street");
-        const street = streetinp.value.trim();
-        const houseinp = document.getElementById("house");
-        const house = houseinp.value.trim();
-        const apartmentinp = document.getElementById("apartment");
-        const apartment = apartmentinp.value.trim();
-        if (!name || !phone || !street || !house || !city) {
+        const nameInp = document.getElementById("fullName");
+        const phoneInp = document.getElementById("phone");
+        const cityInp = document.getElementById("city");
+        const streetInp = document.getElementById("street");
+        const houseInp = document.getElementById("house");
+        const apartmentInp = document.getElementById("apartment");
+        const fullname = nameInp.value.trim();
+        const phone = phoneInp.value.trim();
+        const city = cityInp.value.trim();
+        const street = streetInp.value.trim();
+        const house = houseInp.value.trim();
+        const apartment = apartmentInp.value.trim();
+        if (!fullname || !phone || !street || !house || !city) {
             alert("Please fill in all fields.");
             return;
         }
         const storedUserId = localStorage.getItem("userId");
         const userIdString = storedUserId;
         orderData.userId = userIdString;
+        orderData.fullname = fullname;
+        orderData.phone = phone;
         orderData.listItems = cartItems;
         orderData.sum = total;
         orderData.address = {

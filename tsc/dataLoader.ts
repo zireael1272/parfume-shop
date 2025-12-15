@@ -10,7 +10,6 @@ async function loadUserDataToForms() {
     if (response.ok) {
       console.log("dataLoader: Данные загружены");
 
-      // Теперь ID везде одинаковые!
       const nameInp = document.getElementById("fullName") as HTMLInputElement;
       const emailInp = document.getElementById("email") as HTMLInputElement;
       const phoneInp = document.getElementById("phone") as HTMLInputElement;

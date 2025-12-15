@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", () => __awaiter(void 0, void 0, vo
             .map((item) => `<li class="item">${item.name} (x${item.quantity})</li>`)
             .join("");
         const userEmail = order.userId ? order.userId.email : "Unknown User";
-        const userFullname = ((_a = order.userId) === null || _a === void 0 ? void 0 : _a.fullname) || "-";
-        const userPhone = ((_b = order.userId) === null || _b === void 0 ? void 0 : _b.phone) || "-";
+        const userFullname = order.fullname || ((_a = order.userId) === null || _a === void 0 ? void 0 : _a.fullname) || "-";
+        const userPhone = order.phone || ((_b = order.userId) === null || _b === void 0 ? void 0 : _b.phone) || "-";
         const thumbnailSrc = ((_d = (_c = order.listItems) === null || _c === void 0 ? void 0 : _c[0]) === null || _d === void 0 ? void 0 : _d.image) || "images/placeholder.png";
         card.innerHTML = `
       <div class="order-card-content">

@@ -155,7 +155,7 @@ router.put("/products/:id", async (req, res) => {
 
 router.post("/order", async (req, res) => {
   try {
-    const { userId, address, listItems, sum } = req.body;
+    const { userId, fullname, phone, address, listItems, sum } = req.body;
 
     if (!address) {
       return res.status(400).json({ message: "Address is missing" });
@@ -178,6 +178,8 @@ router.post("/order", async (req, res) => {
 
     const newOrder = new Order({
       userId: userId,
+      fullname,
+      phone,
       listItems: listItems.map((item) => ({
         productId: item.productId,
         name: item.name,

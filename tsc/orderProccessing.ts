@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       .join("");
 
     const userEmail = order.userId ? order.userId.email : "Unknown User";
-    const userFullname = order.userId?.fullname || "-";
-    const userPhone = order.userId?.phone || "-";
+    const userFullname = order.fullname || order.userId?.fullname || "-";
+    const userPhone = order.phone || order.userId?.phone || "-";
 
     const thumbnailSrc = order.listItems?.[0]?.image || "images/placeholder.png";
 

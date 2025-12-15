@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const orderData = {
     userId: localStorage.getItem("userId"),
+    fullname: "",
+    phone: "",
     address: {},
     listItems: cartItems,
     sum: 0,
@@ -45,20 +47,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!toPaymentBtn) return;
   toPaymentBtn.addEventListener("click", () => {
-    const nameinp = document.getElementById("fullName") as HTMLInputElement;
-    const name = nameinp.value.trim();
-    const phoneinp = document.getElementById("phone") as HTMLInputElement;
-    const phone = phoneinp.value.trim();
-    const cityinp = document.getElementById("city") as HTMLInputElement;
-    const city = cityinp.value.trim();
-    const streetinp = document.getElementById("street") as HTMLInputElement;
-    const street = streetinp.value.trim();
-    const houseinp = document.getElementById("house") as HTMLInputElement;
-    const house = houseinp.value.trim();
-    const apartmentinp = document.getElementById("apartment") as HTMLInputElement;
-    const apartment = apartmentinp.value.trim();
+    const nameInp = document.getElementById("fullName") as HTMLInputElement;
+    const phoneInp = document.getElementById("phone") as HTMLInputElement;
+    const cityInp = document.getElementById("city") as HTMLInputElement;
+    const streetInp = document.getElementById("street") as HTMLInputElement;
+    const houseInp = document.getElementById("house") as HTMLInputElement;
+    const apartmentInp = document.getElementById("apartment") as HTMLInputElement;
 
-    if (!name || !phone || !street || !house || !city) {
+    const fullname = nameInp.value.trim();
+    const phone = phoneInp.value.trim();
+    const city = cityInp.value.trim();
+    const street = streetInp.value.trim();
+    const house = houseInp.value.trim();
+    const apartment = apartmentInp.value.trim();
+
+    if (!fullname || !phone || !street || !house || !city) {
       alert("Please fill in all fields.");
       return;
     }
@@ -66,6 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const storedUserId = localStorage.getItem("userId");
     const userIdString = storedUserId;
     orderData.userId = userIdString;
+    orderData.fullname = fullname;
+    orderData.phone = phone;
     orderData.listItems = cartItems;
     orderData.sum = total;
 
