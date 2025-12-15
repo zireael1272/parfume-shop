@@ -110,6 +110,28 @@ window.onload = function () {
     if (document.getElementById("cartItems")) {
         displayCartItems();
     }
+    const checkoutBtn = document.querySelector("#checkout-btn");
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener("click", (e) => {
+            const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+            if (!isLoggedIn) {
+                e.preventDefault();
+                const wrapper = document.querySelector(".wrapper");
+                const loginForm = document.querySelector(".form-box.login");
+                const registerForm = document.querySelector(".form-box.register");
+                if (wrapper) {
+                    wrapper.classList.add("active-popup");
+                    if (loginForm)
+                        loginForm.classList.add("active");
+                    if (registerForm)
+                        registerForm.classList.remove("active");
+                }
+                else {
+                    alert("Please log in to proceed to checkout.");
+                }
+            }
+        });
+    }
 };
 function updateLocalStorage() {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));

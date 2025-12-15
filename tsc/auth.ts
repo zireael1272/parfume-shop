@@ -1,17 +1,27 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const response = await fetch("/pages/authModal.html");
+    if (response.ok) {
+      const html = await response.text();
+      document.body.insertAdjacentHTML("beforeend", html);
+      initAuthLogic();
+    } else {
+      console.error("Failed to load auth modal");
+    }
+  } catch (err) {
+    console.error("Error loading auth component:", err);
+  }
+});
+
+function initAuthLogic() {
   const wrapper = document.querySelector(".wrapper");
   const loginForm = document.querySelector(".form-box.login");
   const registerForm = document.querySelector(".form-box.register");
   const registerLink = document.querySelector(".register-link");
   const loginLink = document.querySelector(".login-link");
-  const registerFormElement = document.getElementById("registerForm");
   const closeBtn = document.getElementById("closeBtn");
-
-  if (!wrapper) return;
-  if (!loginForm) return;
-  if (!registerForm) return;
-  if (!registerLink) return;
-  if (!loginLink) return;
+  const registerFormElement = document.getElementById("registerForm");
+  const loginFormElement = document.getElementById("loginForm");
 
   function isUserLoggedIn() {
     return localStorage.getItem("isLoggedIn") === "true";
@@ -21,49 +31,52 @@ document.addEventListener("DOMContentLoaded", () => {
     return localStorage.getItem("userRole");
   }
 
-  document.querySelector(".account-btn")?.addEventListener("click", (e) => {
-    e.preventDefault();
+  const accountBtn = document.querySelector(".account-btn");
+  if (accountBtn) {
+    accountBtn.addEventListener("click", (e) => {
+      e.preventDefault();
 
-    if (isUserLoggedIn()) {
-      const role = getUserRole();
-
-      if (role === "admin") {
-        window.location.href = "/admPanel";
+      if (isUserLoggedIn()) {
+        const role = getUserRole();
+        if (role === "admin") {
+          window.location.href = "/admPanel";
+        } else {
+          window.location.href = "/account";
+        }
       } else {
-        window.location.href = "/account";
+        if (wrapper) {
+          wrapper.classList.add("active-popup");
+          loginForm?.classList.add("active");
+          registerForm?.classList.remove("active");
+        }
       }
-    } else {
-      wrapper.classList.add("active-popup");
-      loginForm.classList.add("active");
-      registerForm.classList.remove("active");
-    }
-  });
+    });
+  }
 
-  registerLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    wrapper.classList.add("active");
-  });
+  if (registerLink && wrapper) {
+    registerLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      wrapper.classList.add("active");
+    });
+  }
 
-  loginLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    wrapper.classList.remove("active");
-  });
+  if (loginLink && wrapper) {
+    loginLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      wrapper.classList.remove("active");
+    });
+  }
 
-  if (closeBtn) {
+  if (closeBtn && wrapper) {
     closeBtn.addEventListener("click", () => {
-      wrapper.classList.remove("active-popup", "active");
+      wrapper.classList.remove("active-popup");
     });
   }
 
   window.addEventListener("click", (e) => {
+    if (!wrapper) return;
     if (e.target === wrapper) {
-      wrapper.classList.remove("active-popup", "active");
-    }
-  });
-
-  window.addEventListener("click", (e) => {
-    if (e.target === wrapper) {
-      wrapper.classList.remove("active-popup", "active");
+      wrapper.classList.remove("active-popup");
     }
   });
 
@@ -71,18 +84,19 @@ document.addEventListener("DOMContentLoaded", () => {
     registerFormElement.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const emailinp = registerFormElement.querySelector(
-        'input[type="email"]'
+      const emailInput = registerFormElement.querySelector(
+        'input[name="email"]'
       ) as HTMLInputElement;
-      const email = emailinp.value.trim();
-      const passwordinp = registerFormElement.querySelector(
+      const passInput = registerFormElement.querySelector(
         ".password"
       ) as HTMLInputElement;
-      const password = passwordinp.value.trim();
-      const passwordAgaininp = registerFormElement.querySelector(
+      const passAgainInput = registerFormElement.querySelector(
         ".password-again"
       ) as HTMLInputElement;
-      const passwordAgain = passwordAgaininp.value.trim();
+
+      const email = emailInput?.value.trim();
+      const password = passInput?.value.trim();
+      const passwordAgain = passAgainInput?.value.trim();
 
       if (!email || !password || !passwordAgain) {
         alert("Please fill in all fields.");
@@ -106,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (response.ok) {
           localStorage.setItem("isLoggedIn", "true");
           localStorage.setItem("userEmail", email);
+          localStorage.setItem("userRole", "user");
           window.location.href = "/index";
         } else {
           alert(data.message || "Registration failed.");
@@ -117,19 +132,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const loginFormElement = document.getElementById("loginForm");
   if (loginFormElement) {
     loginFormElement.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const emailinp = loginFormElement.querySelector(
-        'input[type="email"]'
+      const emailInput = loginFormElement.querySelector(
+        'input[name="email"]'
       ) as HTMLInputElement;
-      const email = emailinp.value.trim();
-      const passwordinp = loginFormElement.querySelector(
-        'input[type="password"]'
+      const passInput = loginFormElement.querySelector(
+        'input[name="password"]'
       ) as HTMLInputElement;
-      const password = passwordinp.value.trim();
+
+      const email = emailInput?.value.trim();
+      const password = passInput?.value.trim();
 
       try {
         const response = await fetch("/api/login", {
@@ -145,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
           localStorage.setItem("userId", data.user.id);
           localStorage.setItem("userEmail", email);
           localStorage.setItem("userRole", data.user.role);
+
           if (data.user.role === "admin") {
             window.location.href = "/admPanel";
           } else {
@@ -159,4 +175,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-});
+}

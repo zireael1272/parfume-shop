@@ -40,9 +40,9 @@ function renderProducts(products) {
         const product = document.createElement("div");
         product.className = "product";
         product.innerHTML = `
-    <img src="${item.image}" class="product-img" alt="${item.name}">
+    <img src="${item.image}" class="product-img" alt="${item.title}">
     <div class="product-info">
-      <h2 class="product-title">${item.name}</h2>
+      <h2 class="product-title">${item.title}</h2>
       <p class="category">${item.category}</p>
       <p class="product-price">$${item.price}</p>
       <a class="add-to-cart-btn btn" onclick="addToCart(this.closest('.product'))">Add to cart</a>
