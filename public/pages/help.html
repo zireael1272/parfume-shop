@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./scss/main.min.css" />
+    <title>Help</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-container">
+          <div class="header-nav">
+            <a href="/" class="logo">Parfume</a>
+            <div class="header-menu">
+              <a href="/woman" class="header-link">Woman</a>
+              <a href="/man" class="header-link">Man</a>
+              <a href="/unisex" class="header-link">Unisex</a>
+            </div>
+          </div>
+          <div class="link-icons">
+            <a href="/cart" class="cart-link">
+              <svg class="header-control-icon" width="32" height="32">
+                <use href="./images/icons.svg#icon-bag"></use>
+              </svg>
+              <span class="cart-count" id="cart-count">0</span>
+            </a>
+            <button type="button" class="account-btn" id="account-btn">
+              <svg class="header-control-icon" width="32" height="32">
+                <use href="./images/icons.svg#icon-person-circle"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="help-section">
+      <div class="help-wrapper">
+        <aside class="help-sidebar">
+          <h2 class="heading">Help Center</h2>
+          <nav class="help-nav">
+            <a href="#contact-us" class="nav-link active">Contact Us</a>
+            <a href="#payment" class="nav-link">Payment</a>
+            <a href="#shipment" class="nav-link">Shipping</a>
+            <a href="#track-order" class="nav-link">Tracking</a>
+            <a href="#return-order" class="nav-link">Returns</a>
+          </nav>
+        </aside>
+
+        <div class="help-content">
+          <div class="help-card" id="contact-us">
+            <h3 class="help-title">Contact Us</h3>
+            <p class="help-text">
+              We are always here to help you choose the perfect scent. If you have
+              any questions regarding our products, your order, or shipping, please
+              feel free to contact our customer support team.
+            </p>
+            <div class="contact-box">
+              <p class="help-text">
+                <strong>Customer Support</strong> <br />
+                Email:
+                <a class="contact-link" href="mailto:support@parfumestore.com"
+                  >support@parfumestore.com</a
+                >
+                <br />
+                Phone:
+                <a class="contact-link" href="tel:+15551234567">+1 (555) 123-4567</a>
+              </p>
+              <p class="help-text">
+                <strong>Working Hours</strong> <br />
+                Mon - Fri: 9:00 AM - 8:00 PM <br />
+                Sat - Sun: 10:00 AM - 6:00 PM
+              </p>
+              <p class="help-text">
+                <strong>Address:</strong><br />
+                123 Fragrance Avenue, New York, NY 10001, USA
+              </p>
+            </div>
+          </div>
+
+          <div class="help-card" id="payment">
+            <h3 class="help-title">Payment Methods & Security</h3>
+            <p class="help-text">
+              We take your security seriously. Our online store uses advanced SSL
+              encryption technology to ensure that your personal and payment
+              information is kept safe and confidential.
+            </p>
+            <ul class="info-list">
+              <li><strong>Visa</strong></li>
+              <li><strong>MasterCard</strong></li>
+              <li><strong>American Express</strong></li>
+            </ul>
+          </div>
+
+          <div class="help-card" id="shipment">
+            <h3 class="help-title">Shipping & Delivery</h3>
+            <p class="help-text">
+              We ship our perfumes worldwide to bring your favorite scents right to
+              your doorstep. All orders are carefully packed to ensure they arrive in
+              perfect condition.
+            </p>
+            <div class="highlight-box">
+              <strong>Processing Time:</strong> 1-2 business days.
+            </div>
+            <p class="help-text"><strong>Delivery Options:</strong></p>
+            <ul class="info-list">
+              <li>Courier Delivery (1-2 days) — Fast & Secure.</li>
+              <li>Post Office (3-5 days) — Standard shipping.</li>
+              <li>Pickup (0 days) — Free from store.</li>
+            </ul>
+          </div>
+
+          <div class="help-card" id="track-order">
+            <h3 class="help-title">Order Tracking</h3>
+            <p class="help-text">
+              Keeping track of your order is easy. Once your order has been
+              dispatched, the status in your personal account will be updated.
+            </p>
+            <ol class="steps-list">
+              <li>Go to the "My Profile" section</li>
+              <li>Select "History"</li>
+              <li>View current status (e.g., "In Transit", "Delivered")</li>
+            </ol>
+          </div>
+
+          <div class="help-card" id="return-order">
+            <h3 class="help-title">Returns & Refunds</h3>
+            <p class="help-text">
+              We want you to be completely satisfied with your purchase. You may
+              return items within <strong>14 days</strong> of receipt.
+            </p>
+            <div class="warning-box">
+              <strong>Note:</strong> Opened perfume bottles or testers cannot be
+              returned for hygiene and safety reasons.
+            </div>
+            <p class="help-text">
+              To initiate a return, please email us at
+              <a class="contact-link" href="mailto:support@parfumestore.com"
+                >support@parfumestore.com</a
+              >
+              with your Order ID.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-content">
+            <a href="/" class="logo">Parfume</a>
+          </div>
+          <div class="footer-nav">
+            <h3 class="footer-nav-title">Help</h3>
+            <div class="footer-links">
+              <a href="#contact-us" class="footer-link">Contact Us</a>
+              <a href="#payment" class="footer-link">Payment</a>
+              <a href="#shipment" class="footer-link">Shipment</a>
+              <a href="#track-order" class="footer-link">Track your order</a>
+              <a href="#return-order" class="footer-link">Return your order</a>
+            </div>
+          </div>
+          <div class="footer-box">
+            <div class="footer-social">
+              <a href="#">
+                <svg class="footer-social-icon" width="32" height="32">
+                  <use href="./images/icons.svg#icon-logo-instagram"></use>
+                </svg>
+              </a>
+              <a href="#">
+                <svg class="footer-social-icon" width="32" height="32">
+                  <use href="./images/icons.svg#icon-logo-mail"></use>
+                </svg>
+              </a>
+            </div>
+            <p class="copyright">&#169; Parfume</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/js/auth.js"></script>
+    <script src="/js/cart.js"></script>
+  </body>
+</html>

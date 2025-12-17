@@ -1,75 +1,126 @@
 "use strict";
-const orders = [
-    {
-        orderNumber: "001",
-        date: "2025-11-17",
-        status: "Delivered",
-        items: [
-            { name: "Blanche", quantity: 2, image: "images/blanche.png", price: 189.2 },
-            { name: "Cloud", quantity: 1, image: "images/cloud.png", price: 63.1 },
-            { name: "Angels Share", quantity: 1, image: "images/angel.png", price: 336.5 },
-        ],
-    },
-    {
-        orderNumber: "002",
-        date: "2025-11-10",
-        status: "In Transit",
-        items: [
-            {
-                name: "Stronger with You",
-                quantity: 1,
-                image: "images/you.png",
-                price: 97.4,
-            },
-        ],
-    },
-];
-const orderItemsContainer = document.getElementById("orderItems");
-orders.forEach((order) => {
-    const orderCard = document.createElement("div");
-    orderCard.className = "order-card";
-    const orderHeader = document.createElement("div");
-    orderHeader.className = "order-header";
-    orderHeader.innerHTML = `
-    <span>Order #${order.orderNumber} - ${order.date}</span>
-    <span class="order-status">${order.status}</span>
-  `;
-    orderCard.appendChild(orderHeader);
-    const orderSummary = document.createElement("div");
-    orderSummary.className = "order-summary";
-    const firstItem = order.items[0];
-    let moreText = order.items.length > 1 ? ` +${order.items.length - 1}` : "";
-    orderSummary.innerHTML = `
-    <span>${moreText}</span>
-    <img src="${firstItem.image}" alt="${firstItem.name}">
-  `;
-    orderCard.appendChild(orderSummary);
-    const orderItemsDiv = document.createElement("div");
-    orderItemsDiv.className = "order-items";
-    order.items.forEach((item) => {
-        const orderItem = document.createElement("div");
-        orderItem.className = "order-item";
-        orderItem.innerHTML = `
-      <img src="${item.image}" alt="${item.name}">
-      <div class="order-item-info">
-        <span class="item-name">${item.name}</span>
-        <span class="item-quantity">x${item.quantity}</span>
-      </div>
-      <span class="item-price">$${(item.price * item.quantity).toFixed(2)}</span>
-    `;
-        orderItemsDiv.appendChild(orderItem);
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
-    const total = order.items.reduce((sum, i) => sum + i.price * i.quantity, 0);
-    const orderTotal = document.createElement("div");
-    orderTotal.className = "order-total";
-    orderTotal.textContent = `Total: $${total.toFixed(2)}`;
-    orderCard.appendChild(orderTotal);
-    orderCard.appendChild(orderItemsDiv);
-    orderCard.addEventListener("click", () => {
-        orderItemsDiv.style.display =
-            orderItemsDiv.style.display === "flex" ? "none" : "flex";
-    });
+};
+document.addEventListener("DOMContentLoaded", () => __awaiter(void 0, void 0, void 0, function* () {
+    const orderItemsContainer = document.getElementById("orderItems");
     if (!orderItemsContainer)
         return;
-    orderItemsContainer.appendChild(orderCard);
-});
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+        orderItemsContainer.innerHTML = "<p>Please log in to view your orders.</p>";
+        return;
+    }
+    try {
+        const response = yield fetch(`/api/orders/user/${userId}`);
+        if (!response.ok)
+            throw new Error("Failed to fetch orders");
+        const orders = yield response.json();
+        if (orders.length === 0) {
+            orderItemsContainer.innerHTML = "<p>You haven't placed any orders yet.</p>";
+            return;
+        }
+        orders.forEach((order) => {
+            const orderCard = document.createElement("div");
+            orderCard.className = "order-card";
+            const dateObj = new Date(order.createdAt);
+            const dateString = dateObj.toLocaleDateString();
+            const orderNumber = order._id.slice(-6).toUpperCase();
+            const orderHeader = document.createElement("div");
+            orderHeader.className = "order-header";
+            orderHeader.innerHTML = `
+            <div>Order #${orderNumber} - ${dateString}</div>
+            <div class="order-header-right">
+                <div class="order-status">${order.status}</div>
+                <button type="button" class="btn cancel-btn hidden" data-id="${order._id}">Cancel order</button>
+            </div>
+        `;
+            orderCard.appendChild(orderHeader);
+            const cancelBtn = orderHeader.querySelector(".cancel-btn");
+            if (cancelBtn) {
+                if (["Paid", "In progress"].includes(order.status)) {
+                    cancelBtn.classList.remove("hidden");
+                }
+                cancelBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    const target = e.target;
+                    const id = target.getAttribute("data-id");
+                    cancelOrder(id);
+                });
+            }
+            const orderSummary = document.createElement("div");
+            orderSummary.className = "order-summary";
+            const items = order.listItems || [];
+            const firstItem = items[0];
+            const imgPath = firstItem ? firstItem.image : "images/placeholder.png";
+            let moreText = items.length > 1 ? ` +${items.length - 1}` : "";
+            orderSummary.innerHTML = `
+            <div>
+                <img src="${imgPath}" alt="Product">
+                <div>${moreText}</div>
+            </div>
+            <div>$${order.sum.toFixed(2)}</div>
+        `;
+            orderCard.appendChild(orderSummary);
+            const orderItemsDiv = document.createElement("div");
+            orderItemsDiv.className = "order-items";
+            items.forEach((item) => {
+                const orderItem = document.createElement("div");
+                orderItem.className = "order-item";
+                orderItem.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <div class="order-item-info">
+                    <div class="item-name">${item.name}</div>
+                    <div class="item-quantity">x${item.quantity}</div>
+                </div>
+                <div class="item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+            `;
+                orderItemsDiv.appendChild(orderItem);
+            });
+            const orderTotal = document.createElement("div");
+            orderTotal.className = "order-total";
+            orderTotal.textContent = `Total: $${order.sum.toFixed(2)}`;
+            orderItemsDiv.appendChild(orderTotal);
+            orderCard.appendChild(orderItemsDiv);
+            orderCard.addEventListener("click", () => {
+                orderItemsDiv.classList.toggle("active");
+            });
+            orderItemsContainer.appendChild(orderCard);
+        });
+    }
+    catch (error) {
+        console.error("Error loading orders:", error);
+        orderItemsContainer.innerHTML = "<p>Error loading orders.</p>";
+    }
+}));
+function cancelOrder(orderId) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (!orderId)
+            return;
+        if (!confirm("Are you sure you want to cancel this order?"))
+            return;
+        try {
+            const res = yield fetch(`/api/orders/${orderId}/cancel`, {
+                method: "POST",
+            });
+            if (res.ok) {
+                alert("Order cancelled");
+                location.reload();
+            }
+            else {
+                const data = yield res.json();
+                alert(data.message || "Error cancelling order");
+            }
+        }
+        catch (err) {
+            console.error(err);
+            alert("Server error");
+        }
+    });
+}

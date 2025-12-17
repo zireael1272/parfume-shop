@@ -32,5 +32,8 @@
 <symbol id="icon-back" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3" d="M20.5 7l-9 9 9 9"></path>
 </symbol>
+<symbol id="icon-down" viewBox="0 0 32 32">
+<path stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3" d="M7 11.5l9 9 9-9"></path>
+</symbol>
 </defs>
 </svg>

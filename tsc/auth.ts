@@ -121,7 +121,7 @@ function initAuthLogic() {
           localStorage.setItem("isLoggedIn", "true");
           localStorage.setItem("userEmail", email);
           localStorage.setItem("userRole", "user");
-          window.location.href = "/index";
+          window.location.href = "/account";
         } else {
           alert(data.message || "Registration failed.");
         }
@@ -164,7 +164,7 @@ function initAuthLogic() {
           if (data.user.role === "admin") {
             window.location.href = "/admPanel";
           } else {
-            window.location.href = "/index";
+            window.location.href = "/";
           }
         } else {
           alert(data.message || "Login failed.");

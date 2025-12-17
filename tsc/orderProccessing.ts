@@ -25,8 +25,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function createOrderCard(order: any) {
     const card = document.createElement("div");
+    card.className = "order-card";
 
-    card.style.marginBottom = "24px";
+    const isCancelled = order.status === "Cancelled";
+
+    const controlClass = isCancelled ? "disabled-control" : "";
 
     let statusOptions = "";
     ALL_STATUSES.forEach((status) => {
@@ -45,13 +48,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     const itemsHtml = order.listItems
-      .map((item: any) => `<li class="item">${item.name} (x${item.quantity})</li>`)
+      .map(
+        (item: any) =>
+          `<li class="item">${item.name} <span class="item-qty">(x${item.quantity})</span></li>`
+      )
       .join("");
 
     const userEmail = order.userId ? order.userId.email : "Unknown User";
+    // Берем данные из заказа, если нет - из профиля
     const userFullname = order.fullname || order.userId?.fullname || "-";
     const userPhone = order.phone || order.userId?.phone || "-";
-
     const thumbnailSrc = order.listItems?.[0]?.image || "images/placeholder.png";
 
     card.innerHTML = `
@@ -61,49 +67,55 @@ document.addEventListener("DOMContentLoaded", async () => {
             <img class="orderImg" src="${thumbnailSrc}" alt="Order Thumbnail">
             
             <div class="order-info">
-              <p class="label"><strong>User:</strong> ${userEmail}</p>
-              <p class="label"><strong>Full Name:</strong> ${userFullname}</p>
-              <p class="label"><strong>Phone:</strong> ${userPhone}</p>
-              <p class="label"><strong>Total:</strong> $${order.sum.toFixed(2)}</p>
-              <p class="label"><strong>Address:</strong> ${order.address}</p>
+              <p class="label"><span class="label-key">User:</span> ${userEmail}</p>
+              <p class="label"><span class="label-key">Full Name:</span> ${userFullname}</p>
+              <p class="label"><span class="label-key">Phone:</span> ${userPhone}</p>
+              <p class="label"><span class="label-key">Total:</span> $${order.sum.toFixed(2)}</p>
+              <p class="label"><span class="label-key">Address:</span> ${order.address}</p>
               
-              <p class="label"><strong>Items:</strong></p>
+              <p class="label items-label-row"><span class="label-key">Items:</span></p>
               <ul class="order-items-list">${itemsHtml}</ul>
             </div>
         </div>
 
         <div class="order-controls">
-          <label>
-            Status:
-            <select class="input-control control-select status-select">
+          <label class="control-group">
+            <span class="control-label-text">Status:</span>
+            <select class="input-control control-select status-select ${controlClass}" ${isCancelled ? "disabled" : ""}>
               ${statusOptions}
             </select>
           </label>
 
-          <label>
-             Delivery Method:
-            <select class="input-control control-select delivery-select" >
+          <label class="control-group">
+             <span class="control-label-text">Delivery Method:</span>
+            <select class="input-control control-select delivery-select ${controlClass}" ${isCancelled ? "disabled" : ""}>
               ${deliveryOptions}
             </select>
           </label>
 
-          <button class="manage-product-btn btn update-btn" data-id="${order._id}">Update Order</button>
+          ${
+            !isCancelled
+              ? `<button class="manage-product-btn btn update-btn" data-id="${order._id}">Update Order</button>`
+              : `<div class="cancelled-alert">Order Cancelled</div>`
+          }
         </div>
       </div>
     `;
 
-    const updateBtn = card.querySelector(".update-btn") as HTMLButtonElement;
-    const statusSelect = card.querySelector(".status-select") as HTMLSelectElement;
-    const deliverySelect = card.querySelector(
-      ".delivery-select"
-    ) as HTMLSelectElement;
+    if (!isCancelled) {
+      const updateBtn = card.querySelector(".update-btn") as HTMLButtonElement;
+      const statusSelect = card.querySelector(".status-select") as HTMLSelectElement;
+      const deliverySelect = card.querySelector(
+        ".delivery-select"
+      ) as HTMLSelectElement;
 
-    if (updateBtn && statusSelect && deliverySelect) {
-      updateBtn.addEventListener("click", async () => {
-        const newStatus = statusSelect.value;
-        const newDeliveryId = deliverySelect.value;
-        await updateOrder(order._id, newStatus, newDeliveryId);
-      });
+      if (updateBtn && statusSelect && deliverySelect) {
+        updateBtn.addEventListener("click", async () => {
+          const newStatus = statusSelect.value;
+          const newDeliveryId = deliverySelect.value;
+          await updateOrder(order._id, newStatus, newDeliveryId);
+        });
+      }
     }
 
     return card;

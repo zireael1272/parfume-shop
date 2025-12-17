@@ -104,6 +104,14 @@ router.post("/productAdd", async (req, res) => {
   try {
     const { title, category, price, image, stock } = req.body;
 
+    const existingProduct = await Product.findOne({ title: title });
+
+    if (existingProduct) {
+      return res
+        .status(400)
+        .json({ message: "Product with this title already exists!" });
+    }
+
     const newProduct = new Product({
       title,
       category,
@@ -219,6 +227,19 @@ router.get("/orders", async (req, res) => {
   }
 });
 
+router.get("/orders/user/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const orders = await Order.find({ userId: userId }).sort({ createdAt: -1 });
+
+    res.json(orders);
+  } catch (err) {
+    console.error("Error fetching user orders:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 router.put("/orders/:id", async (req, res) => {
   try {
     const { status, deliveryMethodId } = req.body;
@@ -229,6 +250,28 @@ router.put("/orders/:id", async (req, res) => {
     });
 
     res.json({ message: "Order updated successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.post("/orders/:id/cancel", async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id);
+
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    if (["In transit", "Delivered", "Cancelled"].includes(order.status)) {
+      return res.status(400).json({ message: "Cannot cancel this order" });
+    }
+
+    order.status = "Cancelled";
+    await order.save();
+
+    res.json({ message: "Order cancelled successfully", order });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Server error" });

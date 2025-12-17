@@ -5,7 +5,11 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   role: { type: String, default: "user" },
   fullname: { type: String },
-  phone: { type: String, unique: true },
+  phone: {
+    type: String,
+    unique: true,
+    sparse: true,
+  },
 });
 
 export default mongoose.model("User", userSchema);
