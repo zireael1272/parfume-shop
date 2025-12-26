@@ -1,6 +1,6 @@
 # parfume-store
 
-Online perfume store
+Online parfum store
 
 Functional:
 - user registration and authorization;
