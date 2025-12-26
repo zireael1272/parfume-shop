@@ -1,4 +1,4 @@
-# parfume-store
+# parfum-store
 
 Online parfum store
 
